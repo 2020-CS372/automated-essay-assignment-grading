@@ -1,0 +1,51 @@
+ Fig. 1.   Block diagram of AES algorithm.
+field   GF   (28).   The   specification   of   AES   has   adopted 
+polynomial representation of the byte elements of GF (28) with 
+coefficients over the field GF (2). A polynomial representation 
+of  byte  a(x)  with  coefficients  over  the  field  GF  (2)  is 
+represented as follows:  ?(?) = ????? 
+              =???? + ???? + ???? + ???? + ???? +
+???? +a1x1+a0       
+ 
+ 
+ 
+Where ai= {0, 1}. 
+ 
+The binary representation of the polynomial given 
+by (1) is as follows: 
+a(x) ?a7a6a5a4a3a2a1a0        
+For  example,  a  byte  element  represented  in  binaryform  as 
+1100 0001 is written in polynomial form as The  operation  of  addition  using  byte  elements  is 
+defined as addition of the corresponding polynomials. In case 
+of  polynomials  over  GF (2) addition is  just an  exclusive OR 
+(XOR)   operation.   For   byte   multiplication   the   following 
+irreducible polynomialis used in AES: 
+ 
+ 
+m(x) = x? + x? + x? + x + 1          
+Multiplication  in  GF  (28)  is  denoted  as  ?.  The 
+multiplication of two polynomials a(x) and b(x) is defined as 
+the   algebraic   product   of   the   polynomials   modulo   the 
+irreducible polynomial m(x) as below:   
+c(x) = a(x) - b(x) = a(x)b(x)mod m(x) 
+          SubBytes is a nonlinear transformation in which one 
+byte  is  substituted   for  another   by   means   of   the   affine 
+transformation over the Galois Field GF(2)  
+ 
+ShiftRows is  a shift operation  performed  on the last 
+three rows  of the state.   The  last three rows  are  rotated to the 
+left by 1, 2, or 3 bytes, as seen inFig. 1. MixColumns is finite 
+field matrix multiplication applied every round except the last. 
+Each  column  is  multiplied  as  a  four-term  polynomial  in  GF 
+(28) mod (x4+ 1) using the array  
+ 
+AddRoundKey performs a bitwise XOR operation with the 
+current   state   and   the   expanded   round   key   every   round 
+including an initial round and the last round. The round key is 
+read from round 0 to (Nr – 1) for encryption and vice versa for 
+decryption. The decryption process is similar to the encryption 
+process, simply executing the inverse of each function. Inverse 
+SubBytes  involves  taking  an  inverse  affine  transformation. 
+Inverse ShiftRows rotates the bytes to the right by: 3, 2, or 1 
+byte(s).  Inverse  MixColumnsuses  the  same  operations  as 
+MixColumns but usesthe inverse matrix. 

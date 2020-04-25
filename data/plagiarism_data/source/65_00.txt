@@ -1,0 +1,28 @@
+Fig. 1.    Finite-state machine for group mobility-based clustering
+The clusters should be the basis for hierarchical routing.
+By using an auto-con?guration mechanism, address pre?xes
+are assigned to the clusters. The address pre?x for a cluster is
+maintained by the cluster’s leader. Each node in a cluster has to
+know its address pre?x. From this requirement, it follows that
+only the cluster members need to know their current leader, but
+not vice versa. We assume that each cluster can be identi?ed
+network-wide by some unique value assigned to it. This unique
+value could for example be the leader’s MAC address.
+Consequently, a node can be in three different states: It can
+either be no member of any cluster (unclustered), member of
+exactly one cluster (clustered) or the leader of exactly one
+cluster (leader).
+As  a  result  of  the  nodes’  movements,  there  are  several
+possible events in the life cycle of a cluster (see ?gure 1).
+Two nodes may meet and form a cluster, one of them declaring
+itself to be leader (event create). Nodes can be added to an
+existing cluster (event join). Or two clusters may be collapsed
+to one (event merge). If a cluster is split in two with one of
+the remaining parts having no leader, the cluster has to be
+“repaired” accordingly. Nodes may depart from their clusters
+(event leave), and a cluster disappears when all members leave
+it.The last and most signi?cant requirement for ODGMBC is
+that it has to be reactive. Most of the clustering protocols pre-
+viously proposed in the literature try to (pro-)actively discover
+a node’s neighbourhood by periodically broadcasting “hello”-
+beacons.

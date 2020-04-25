@@ -1,0 +1,50 @@
+Fig.3.FDD symmetric system overview 
+ A  different  scenario  would  be  that  of  a high,   symmetric,  traffic   load.   This   would 
+require  equal  resources  in  both  the  uplink  and 
+the  downlink.  A  natural  way  to  accomplish 
+such symmetric resource distribution  is throudh 
+Frequency  Division  Duplex,  a  counterpart  to 
+the TDD system described  previously.  In  FDD, 
+the    uplink    and    downlink    channels    are 
+independent,  acting on separate frequencies, so 
+they   can   transmit   simul-taneously   without 
+affecting  each  other. In this case, we have  two 
+different channels.  Their characteristics need to 
+be   estimated   and   pre-dicted   to   make   the 
+adaptive modulation work efficiently. 
+The   complexity   and   frequency  of  the 
+predictor   parameter   updating   is  a  topic  for 
+further  research,  but  it  would  probably  require 
+considerable  computations.  For this reason,  the 
+adaptor  is  proposed  to  be  located  at  the  base 
+station. the predictor  has also been  moved  to the  base 
+Fig.3.FDD symmetric system overview 
+station,  since there  is  a  potential  advantage  in 
+providing  the  base  station  with  the  downlink 
+SNR  information:  If  the  SNR  information  is 
+known  to  the  base  station,  it  can  control  the 
+different   connections   more   efficiently.   The 
+price to be paid for this is an increase  in  traffic 
+on   the   control   uplink   channel  due  to  the 
+necessity     of    transferring    the     estimated 
+downlink SNRs from the mobile’s  estimator to 
+the base station’s predictor. 
+Thus the  base  station  decides on  both  the 
+uplink  and  downlink  modulation  formats,  and 
+signals the result to the mobile over the control 
+downlink channel. 
+111. Experiment 
+To evaluate the proposed system solutions, 
+a  simulation  series  was  conducted,  assuming 
+one  base   station   transmitting   to  a   mobile 
+terminal.  This  is,  of  course,  a  simpli-fication 
+which implies that there will  be no  interference 
+from  other  users.  We   also  assume  that  the 
+channel   conditions   are   known   for   a   few 
+milliseconds  ahead  in  time.  Moreover,  perfect 
+synchronisation  and  transmission  at a  constant 
+maximum    amplitude,     regardless     of    the 
+modulation     alphabet,     is     assumed.     The 
+experiment is applicable to both TDD and FDD 
+systems,  provided  that accurate pre-dictions  of 
+the channel conditions exist. 

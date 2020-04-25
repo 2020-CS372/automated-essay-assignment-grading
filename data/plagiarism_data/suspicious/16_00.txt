@@ -1,0 +1,35 @@
+Figure 1 
+Conclusions and future work  are presented in section 6. 
+ 2.  Terminology and Formalism To   define   cohesion   measures   it   is  necessary   to 
+establish   a   proper   standardized,   unambiguous   and 
+operational  terminology  and  formalism.  Briand  et.  al. 
+[17] introduced a terminology for object oriented (OO) 
+systems  based  on set and graph theory. In this section 
+we introduce the terminology and formalism foundationfor structural elements in an AO system. The presented 
+terminology  is  for  Java,  AspectJ-like,  and  CaesarJ, 
+programming languages.   
+ 
+2.1 Structure 
+ 
+Aspect-Oriented  (AO)  systems  structure  is  a  set  of 
+fundamental     elements,     which     defines     its     key 
+abstractions  for  module  specifications. Figure  1  [18] 
+presents  a  detailed  view  of  the  structural  abstractions 
+defined  for  a  system.  Each  type  of  abstraction  is 
+alternatively called an element.  An  AO  system  S  consists  of  a  set  of  components, 
+denoted  by  C(S).  A  component  c  consists  of  a  set  of 
+attributes, Att(c), a set of operations, Op(c) and a set of 
+nested   components,   Nested(c).   In   other   words,   a 
+component is composed  of  subcomponents in addition 
+to  its  internal  attributes  and  operations.  The  set  of 
+members of a component c is defined by M(c) = Att(c) 
+? Op(c) ? Nested(c). The reader should notice that for 
+generality  purposes,  a  component  is  an  unified  Figure 
+1:  Structure  of  an  Aspect-Oriented  System  abstraction 
+to   both   aspectual  and  non-aspectual  modules.   For 
+example: (i) a component represents either a class or an 
+interface in Java programs, (ii) a component is either a 
+class,  an  interface,  or  an  aspect  in  AspectJ  programs, 
+and  (iii)  a  component  is  either  a  cclass  as  defined  in 
+CaesarJ, a conventional class, or an interface in CaesarJ 
+ 

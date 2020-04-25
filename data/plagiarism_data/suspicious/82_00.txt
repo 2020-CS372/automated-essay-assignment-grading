@@ -1,0 +1,35 @@
+ Fig 4 REACH Mote Flow chart 
+The   wake-up   range   of   the   WISP-Mote   is 
+approximately constrained to 13ft [1] due to the limited energy 
+harvested by the wake up radio receiver. To increase the range 
+of the radio receiver it is necessary to construct a low energy 
+consuming trigger generator when compared to the WISP. 
+ 
+The constraints included in building a trigger circuit are: 
+•  Little  energy  must  be  consumed  by  the  circuit  in-order  to 
+increase the wake-up range. 
+•  A  rising/falling  edge  generated  by  the  circuit  must  be 
+capable of driving the Tmote Sky wakeup.The  output  voltage  level  of  energy  harvesting  circuit  is 
+generally unstable and hence the trigger circuit must be able to 
+work on variable voltages.The trigger to the Tmote Sky mote [2] is given by the trigger 
+circuit from Fig 3.This trigger circuit can generate a pulse of 
+100?s duration once per second and can operating near a voltage ranging from 
+1.5-5V and the current consumed in this circuit, enough to be 
+driven by the lower power receiving harvester circuit, is less 
+than 1?A, thereby achieving the design of low power wakeup 
+receivers.REACH-Mote  (Range  Enhancing  energy  Harvester 
+Mote)  ,a  wake  up  radio  sensor  node  shown  in  Fig  4  is  a 
+combination  of  energy  harvesting  circuit,  wake  up  circuit  as 
+well  as  Tmote  Sky.  Before  the  WuTx  transmits  the  wake-up 
+signal, REACH mote is tuned to the sleep mode i.e., the MCU 
+on the Tmote Sky, which is an MSP430F1611, and the radio 
+are put to LPM3 sleep mode [3] .Once the DC voltage sent by 
+the  harvester  circuit  is  higher  than  1.5V,  the  wake  up  circuit 
+starts generating the pulse which will trigger the mote and put 
+the  mote’s  MCU  into  active  mode  in  5ms  [4].If  there  is  any 
+data  to  be  transferred,  then  REACH  mote  starts  the  transfer 
+else it goes back to sleep mode again 
+There is no drain of energy from the battery as the harvesting 
+circuit  powers  the  wake  up  circuit.  Hence  all  the  energy 
+provided  by  the  REACH  mote  is  used  for  sensing  and  data 
+communication.   

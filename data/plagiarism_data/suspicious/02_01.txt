@@ -1,0 +1,53 @@
+Fig. 6. Recommendations Generation based on Ontology for User Profile 
+and Services 
+This  way,  relations  between  different  users  may  be  modeled 
+as well.  
+“Interest”,   “Preference”,   “Ability”,  “Characteristic”  and 
+“Thing” contain only three slots: “type”, “name” and “score” 
+(or  “value”  in  the  case  of  “Thing”).  “Thing”  has  two  sub-
+classes, “Living Thing” and “Non Living Thing” as modeled 
+in  the  WORLDNET  ontology  [21].  In  the  case  of  interests, 
+apart  from  the  “type”  slot,  which  is  a  String,  a  slot  named 
+“interest type” of type “Interest” has been added to allow the 
+creation of interest hierarchies, 
+It  should  be  mentioned  here  that  in  the  case  of  the 
+“Expertise”  class,  the  aim  was  to  collect  from  the  existing 
+literature user characteristics that may serve as indications or 
+factors during the assessment of the user expertise level. The 
+definition  of  the  expertise  levels  them  and  the  expertise 
+measures are application-specific and out of the scope of the 
+current  work.  To  sum  up,  the  “Expertise”  class  has  been 
+created   as   a   container   for  both   expertise   measures   and 
+expertise scores in order to accommodate the particular needs 
+of individual applications that make use of profiling.  
+IV.  RECOMMENDATION METHOD IN ONTOLOGY-BASED 
+RECOMMENDATION SYSTEM 
+The  amount  of  information  available  over  the  Internet  is 
+enormous  -  even  the  quantum  of  information  on  an  average 
+web site is fairly large for users to maintain easy navigation. 
+This problem can be revealed by providing recommendations 
+based  on  user  profiles  mined  from  web  logs. The  rationale 
+behind  the  approach  of  recommender  systems  is  that  users 
+implicitly use a concept model based on their own knowledge 
+of the domain or topic searched, even though mostly they do 
+not   know   how   to   represent   it   [7].   However,   having 
+unobtrusively monitored users’ actions and collected them in 
+the log, it is possible to apply detection algorithms to produce 
+the concept models of users, i.e., extract user profiles. 
+By  analyzing  the  actions  of  the  current  user  online  and 
+comparing it to the user profiles discovered from the web log, 
+it is possible to classify the user as an individual into one of 
+the  conceptual  user  groups  and  recommend  him/her  new 
+pages    that    correlate    with    that    individual    (primary 
+recommendation), highlight items, so that they could be easily 
+located    or    even    propose    a    new    topology    (analytic 
+recommendation). 
+The  items  in  extracted  user  profiles  do  not  contain  any 
+semantic  information  about  the  content  represented  on  the 
+web-site.  Therefore,  the  extracted  user  profiles  need  to  be 
+mapped  to  the  concepts  of  web  ontology.  For  that  reason, 
+profiles   ontology   is   constructed.   At   this   point,   it   was 
+composed  manually,  however  in  the  future  it  is  planned  to 
+implement  an  automated  generation  of  the  OWL-file.  In  the 
+user  profile  ontology,  several  user  concepts  were  defined  in order  to  give  meaning  to  the  mining  results  and  propose 
+recommendations.

@@ -1,0 +1,45 @@
+Figure 7 Implementation of Time Synchronization Based on ADSP-BF518
+ This implementation is expected 
+to be more economical than that of Ref.[12]. When    a    time    synchronization    frame    reaches    the 
+Preemptive Queue with a sending time t, it firstly be queued, 
+and  then  the  preemptive  priority  mechanism  will  interrupt 
+the sending of other frames when the actual time is t.  After 
+the  time  synchronization  frame  is  sent,  the  frame  which  is 
+interrupted will continue to be transmitted.
+IV.    EXPERIMENT
+To  verify  the  performance  of  the  proposed  scheme, we 
+developed  a  customized  switch  and  test  nodes  with  time 
+client based on the ADSP-BF518 processor from ADI. The
+processor  has  a  built-in  Ethernet  media-access  controller 
+(EMAC)  module,  and  it  can  detect  and  provide  hardware 
+time  stamps  for  all  pre-defined  event  messages,  including 
+both incoming and outgoing packets by its TSYNC module 
+which keeps monitoring the hardware interface between the 
+MAC   controller   and   the   Ethernet   physical   interface 
+transceiver,  that  is,  the  media  independent  interface  (MII). 
+The   detection   of   event   messages   is   designed   to   be 
+programmable. The  TSYNC  module  of  the  processor  detects  incoming 
+and   outgoing   time   synchronization   messages   and   use 
+hardware  to  time-stamp  event  messages  and  uses  the  MAC 
+controller driver to implement the preemptive priority queue. 
+The  Ethernet  PHY  is  National  Semiconductor  DP83848, 
+chosen  because  of  its  low  jitter  delay  characteristics.  For 
+simplicity,  the  processor’s  system  clock  (80  MHz)  was 
+chosen to be the TSYNC module clock source.
+The measurements were made as illustrated in Figure 8. 
+The  two  clocks  were  connected  directly  via  class  5  cable.
+Each  clock  has  a  1-PPS  test  point.  An  oscilloscope(TDC-
+GP2) was  used to  measure the relative offsets between the Because the switch and the node with time client operate 
+at 80MHz, it offers a 12.5ns sampling granularity. It means 
+incoming  and  outgoing  frame  at  the  master  and  slave 
+introduce a 12.5ns uncertainty or jitter. Hence a minimum of 
+25ns  jitter  and  offset  deviation  can  be  expected  from  the 
+setup.  Table  I  summarized  the  measured  performances  at 
+different sync frame transmit intervals.The results show that the slave synchronizes in the range 
+of 1.5ns to the master in average; however the jitter numbers 
+are still showing variations in the range of 200ns when using 
+a sync frame interval of 1 second. From the result, it shows 
+that  the  synchronization  interval  has an important  influence 
+on  the  precision.  When  we  choose  the  synchronization 
+interval  below   3   second,   it   can  achieve   the   class  T5 
+requirements used in the CNC systems.V.    

@@ -1,0 +1,24 @@
+Figure 7 Implementation of Time Synchronization Based on ADSP-BF518 
+ After the  time  synchronization  frame  is  sent,  the  frame  which  is 
+interrupted will continue to be transmitted. 
+IV.    EXPERIMENT 
+To  verify  the  performance  of  the  proposed  scheme,  we 
+developed  a  customized  switch  and  test  nodes  with  time 
+client based on the ADSP-BF518 processor from ADI. The 
+processor  has  a  built-in  Ethernet  media-access  controller 
+(EMAC)  module,  and  it  can  detect  and  provide  hardware 
+time  stamps  for  all  pre-defined  event  messages,  including 
+both incoming and outgoing packets by its TSYNC module 
+which keeps monitoring the hardware interface between the 
+MAC   controller   and   the   Ethernet   physical   interface 
+transceiver,  that  is,  the  media  independent  interface  (MII). 
+The   detection   of   event   messages   is   designed   to   be 
+programmable.A  complete  proposed  time  synchronization implementation  was  built  on  ADSP-BF518  processor  as 
+shown in Figure 7. The  TSYNC  module  of  the  processor  detects  incoming 
+and   outgoing   time   synchronization   messages   and   use 
+hardware  to time-stamp  event  messages  and  uses  the  MAC 
+controller driver to implement the preemptive priority queue. 
+The  Ethernet  PHY  is  National  Semiconductor  DP83848, 
+chosen  because  of  its  low  jitter  delay  characteristics.  For 
+simplicity,  the  processor’s  system  clock  (80  MHz)  was 
+chosen to be the TSYNC module clock source. 

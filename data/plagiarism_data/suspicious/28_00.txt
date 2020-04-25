@@ -1,0 +1,34 @@
+Fig.3 Block Diagram Of The Control Board
+Interface modules, Wireless
+colour camera transmitting both audio and video signals, 434
+Mhz and 315 Mhz wireless RF module, Three Stepper motors
+and drive circuits, Ultrasonic sensor module, RS232 interface
+module,     Wireless     Operation     Range     –     200     meters
+approximately, Power Supply – 12 V-DC.Configuration:  3-wheel,  front  wheel  drive,  rear  wheel
+steer, Dimensions: 200 mm  X 315 mm in area, 185 mm tall,
+3.5  kg  weight,  Wheel  size:  5"  diameter, Drive  Motor:  12  V-
+DC stepper motor with current 1.6 A.
+3. Hardware EnvironmentThis section provides a brief overview about the system
+and general description of the microcontroller, sensors, motors
+and power supply. The client monitors and controls the Soft-i-
+Robot  in  a  remote  workspace  through  internet.  The  peer  to
+peer link is established between client and server PC [1]. The
+command given by the client is received by the server, which
+communicates  with  the  robot  through  a  wireless  link.  The
+Radio Frequency receiver receives the control signals and the
+signals are fed to the PIC16F877 microcontroller.A.       Block Diagram Description
+The  block  diagram  of  the  control  board  is  shown  in
+Fig.3. The control board is mounted on the body of the robot.
+It consists of a microcontroller (µc) which acts as the brain of
+the  robot.  The  microcontroller  is  interfaced  with  the  sensors
+such  as  temperature,  humidity  and  flame.  The  ultrasonic
+transmitter  and  receiver  module  measures  the  distance  of  the
+obstacle  from  the  robot  and  transmits  to  the  server.  The
+robot’s  movements  is  achieved  with  two  stepper  motors,
+which include forward, reverse, left and right turns. The third
+stepper motor is used for camera rotation. The power to drive
+the robot and its sensory subsystems is achieved with the aid
+of  a  12  V  battery  pack.  Soft-i-Robot  receives  and  transmits
+signals from and to the client and server through the internet,
+proving that the streaming technology-based approach greatly
+improves the sensibility of robot tele-operation [2].

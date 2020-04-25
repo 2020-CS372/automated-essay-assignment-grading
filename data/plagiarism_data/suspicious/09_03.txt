@@ -1,0 +1,41 @@
+Figure   5.   Bandwidth   based   adaptive   fuzzy   logic 
+handoff algorithm for hybrid networks  
+Demand Assigned Multiple Access (DAMA) 
+services  are  given  resources  on  a  demand  assignment 
+basis, as the need arises. When an SS needs to ask for 
+bandwidth on a connection with BE scheduling service, 
+it sends a message to the BS containing the immediate 
+requirements  of  the  DAMA  connection.  QoS  for  the 
+connection was established at connection establishment 
+and  is  looked  up  by  the  BS.  The  bandwidth  that  the 
+802.16 network assigns to the mobile host is supposed 
+to be         W      BW   . 
+ 
+6.  Bandwidth  based  adaptive  fuzzy  logic 
+handoff algorithm 
+ 
+When a mobile host connected to the Internet moves 
+into  a  new  IEEE  802.11  network,  it  would  like  to 
+change  the  connection  to  WLAN  to  obtain  higher 
+bandwidth. Since the WMAN is always on, the handoff 
+cannot be triggered by signal decay of the IEEE 802.16 
+network.  We  can  utilize  the  bandwidth  as  handoff 
+metric.   
+In this section the adaptive fuzzy logic based handoff 
+algorithm  for  hybrid networks [8] is presented. handoff algorithm for hybrid networks   
+Figure 5   depicts   the   algorithm.   The   difference   from   the 
+conventional  decision  mechanism  is  that,  here  the 
+metric  is  bandwidth  not  RSS  and  HYSL  and  HYSW 
+values are updated by a fuzzy logic system. Figure   5.   Bandwidth   based   adaptive   fuzzy   logic 
+handoff algorithm for hybrid networks   
+Handoff decision  mechanism is illustrated in Figure 
+6 and Figure 7. 
+1)  When the current cell is a WMAN (Figure 6), since the  priority  is  to  make  handoff  to  WLAN,  first 
+bandwidth  of  the  suggested  WLAN  is  checked.  If 
+BWL  exceeds  the  threshold  (THL)  by  an  amount 
+HYSL,  handoff  will  be  done  to  the  best  WLAN; 
+otherwise    handoff    to    the    best    WMAN    is 
+investigated. If BWW exceeds the current bandwidth 
+(BWc) by an amount HYSW, handoff is made to the 
+best WMAN, otherwise no handoff occurs.  When  the  current  cell  is  a  WLAN  (Figure  7),  first 
+the  best  WLAN  is  investigated.   

@@ -1,0 +1,30 @@
+Fig. 3- HO Decision Mechanism (Current  Macrocell)
+In  this  section,  a  conventional  handoff  algorithm,  which 
+based   on  RSS threshold   and   hysteresis   vaIues[S],    is 
+presented  Fig. 2 illustrates block diagram of the algorithm. 
+First,  in  sampling intervals  RSS  values  are measured and 
+their averages are computed in the averaging window. Then, 
+HO  initiation mechanism indicates if  HO  process  will  be 
+started  or not.  This mechanism, when the  current cell is a 
+WAN,  compares  current  RSS  (RSSc)  with  a  threshold 
+value (THw), if RSSc is less than THw, HO will be started. 
+When the current cell is a macrocell, this mechanis will start Fig. 3- HO Decision Mechanism (Current  Macrocell) 
+HO  in two cases:  either current RSS  (RSSc) is less than a 
+threshold  (THm) or  RSS  from  a  WLAN  is  more  than  a 
+threshold (THw). If HO is started, cell selection mechanism 
+selects best  available  macrocell  (“M)  and  best  available 
+WLAN  (“W)  by  comparing  all  RSS values.  The  HO 
+decision mechanism is the main part of the algorithm.If the 
+current cell is a manocell,  mechanism in Fig. 3 will be done 
+and if the current cell is a WAN, mechanism in Fig. 4 will 
+be done as follows: 
+- When  the  current  cell  is  a  macrocell  (Fig.  3),  since  the 
+priority is to make HO to WAN, first RSS of the suggested 
+WAN  (RSSw) is checked. If RSSw exceeds the threshold 
+(THw)  by  an amount  HYSw,  HO  will  be  done  to   “W, otherwise   HO   to   the   suggested   macrocell      “M”   is 
+investigated. If RSSm exceeds RSSc by   an amount HYSm, 
+HO is made to “M“, otherwise no HO occurs. 
+-  When the  current  cell  is  a  WLAN  (Fig.  4).   h   t    the 
+suggested WLAN  (‘W) is  investigated. If  RSSw  exceeds 
+RSSc  by  an amount HYSw,  HO will be  done to  “W”, else 
+an attempt is made for HO to the suggested macrocell “M”. 

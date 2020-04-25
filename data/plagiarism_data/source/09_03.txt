@@ -1,0 +1,44 @@
+Fig. 5 - Adaptive Fuzzy Logic Based HO Algorithm for 
+  If RSSw exceeds the threshold 
+(THw)  by  an amount  HYSw,  HO  will  be  done  to   “W, Hybrid Networks 
+otherwise   HO   to   the   suggested   macrocell      “M”   is 
+investigated. If RSSm exceeds RSSc by   an amount HYSm, 
+HO is made to “M“, otherwise no HO occurs. 
+-  When the  current  cell  is  a  WLAN  (Fig.  4).   h   t    the 
+suggested WLAN  (‘W) is  investigated. If  RSSw  exceeds 
+RSSc  by  an amount HYSw,  HO will be  done to  “W”, else 
+an attempt is made for HO to the suggested macrocell “M”. 
+If  RSSm  exceeds THm  by  an amount HYSm,  HO will  be 
+done to “M“, otherwise no   HO occurs. 
+This     conventional     algorithm     cannot     meet     many 
+requirements of HNs. It  doesn’t  have  minimum number  of 
+HOs and short HO delay since it uses a tixed RSS averaging 
+window.  For  a fixed  averaging window,  if  h4T  velocity  is 
+high,  HO  delay  is  long and  this  delay may  result  in  poor 
+signal  quality  and  possibly  disconnection  before  making 
+HO,  but  if  MT  velocity  is  low,  HO  delay  is  short  and 
+number  of  unnecessary  HOs  is  increased.  So  a  k e d  
+averaging  window  only  in  a  certain velocity  has optimum 
+performance.  In  addition,  this  algorithm  doesn’t  consider 
+M    c      conditions in the  WLAN,  also it doesn’t prevent fast 
+users from connecting to WLAN. 
+IV. ADAPTIVE FUZZY LOGIC BASED “ D O F F  
+ALGORITHM 
+In this section the adaptive fuzzy logic based HO algorithm 
+for  HNs  is presented. In  [SI methods  for estimating  the 
+speed  of  MT,  which  are based  on  doppler  frequency are 
+proposed.  In  this  algorithm,  averaging  window  is  adapted 
+according to MT speed. When MT speed is high the window 
+will be reduced, so the HO delay is decreased and when the 
+MT  speed  is low  averaging  window  will  be  increased,  so 
+unnecessary HOs are avoided. Handoff initiation mechanism 
+and  cell  selection  mechanism are the s a m e   BS    before. 
+Handoff   decision   mechanism   is   similar   to   previous 
+algorithm (Fig. 3 and Fig. 4),  the only difference is that, here 
+HYSm  and  HYSw  values  are  updated  by  a  fuzzy  logic 
+system(FL.S).  Inputs of the FLS are MT speed and aaffc in 
+the  ‘W (TRw).  The  FLS  is  designed  to  meet  special 
+requirements of HNs. When the velocity of the MT  is high 
+or the  traffic in the WLAN is heavy, HO to WLAN should 
+be   discouraged;   otherwise   HO   to   WLAN   should   be 
+encouraged. 

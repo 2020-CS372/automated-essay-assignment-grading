@@ -1,0 +1,40 @@
+Figure 1       Sequence of Events
+For ease of reference,
+we summarize the notation in Appendix A.
+The consumer with index d derives utility ud  when
+buying from the direct channel. This utility depends
+on  the  delivery  lead  time  t,  which  is  set  by  the
+manufacturer. The direct channel satis?es all orders
+because the delivery lead time t  provides suf?cient
+processing time for the manufacturer. Each consumer
+also derives an expected utility Eur 
+ from visiting the
+retailer. This expectation is due to the uncertainty in
+product availability, which depends on the retailer’s
+service level . The retailer offers instant ownership,
+so the consumer’s utility does not reduce because of
+waiting. But the inconvenience of visiting the retailer
+reduces  the  consumer’s  utility.  The  explicit  utility
+functions are provided in the following section.
+The  consumer  with  index  d  decides  from  which
+channel to buy after comparing her utility from both
+channels. The outcome of this comparison made by
+each  consumer  constitutes  four  streams  of  demand
+for the product (as illustrated in Figure 1). When the
+consumer is willing to wait, i.e., when ud ? 0, she con-
+siders buying from the direct channel as an alterna-
+tive. In this case, when ud ? Eur , the consumer buys
+from  the  direct  channel.  Such  consumers  constitute
+the primary demand D
+1
+d
+in the direct channel. When
+ud < Eur , the consumer visits the retailer. If the prod-
+uct is available at the retailer, she buys it. These con-
+sumers constitute part of the retailer demand Dr . If the
+consumer faces a stockout, she buys from the direct
+channel.  These  consumers  constitute  the  secondary
+demand D
+2
+d
+in the direct channel. 

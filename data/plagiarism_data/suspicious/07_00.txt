@@ -1,0 +1,55 @@
+Figure 1 Schematic diagram of the proposed hierarchical SVM for blog mining 
+ Moreover, 
+different  feature  selection  methods  can  be  used 
+at each tree-node that is specific to the domain of 
+the input data. Each sub-problem is smaller than 
+the   original   problem,   and   it   is   sometimes 
+possible to use a much smaller set of features for 
+each.   
+ 3. Experiments We  have  created  a  business  blog  data  set, 
+and five hundred and twenty nine business blog 
+entries  were  collected  in  two  phases.  First,  a 
+small   number   of   blog   entries   are   manually 
+collected  from  various  CEOs’s  blog  sites  and 
+business  blog  sites.  Meaningful  blog  entries 
+from  these  blog  sites  were  extracted  and  stored 
+into our database. Each blog entry is saved as a 
+text file in its corresponding category, for further 
+text preprocessing. For the preprocessing of the 
+blog  data,  we  performed  lexical  analysis  by 
+removing  stopwords  and  stemming  using  the 
+Porter  stemmer.  The  text  files  are  then  used  as 
+the input for the Text to Matrix Generator (TMG) 
+to  generate  the  term-document  matrix  for  input 
+to  the  blog  search  and  mining  system[6].  The 
+overview of the system is shown in Figure 1. The hierarchical structure we constructed is 
+a  category  tree.  In  the  category  tree,  a  text  will 
+first  be  classified  by  the  classifier  at  the  root 
+level into one or more lower level categories. It 
+will then be further classified by the classifier(s) 
+of the lower level category(ies) until it reaches a 
+final category which could be a leaf category or 
+an  internal  category.  Due  to  the  limited  space, 
+we  eliminate  the  sub-tree  where  the  number  of 
+branches  from  its  root  is  more  than  nine[7].  To 
+find   the   advantage   of   proposed   hierarchical 
+SVM  classifier,  we  compare  our  approach  with 
+both   non-hierarchical   classifiers   as   well   as 
+hierarchical  classifiers,  and  pay  attention  to  the following    two    questions:    (1)    Does    our 
+hierarchical  classifier  based  on  support  vector 
+clustering   method   improve   the   classification 
+performance       when       compared       to       a 
+non-hierarchical  SVM  classifier?  (2)  How  does 
+our  hierarchical  method  compare   with  other 
+famous text categorization methods? 
+Table  1  shows  the  performance  comparison 
+of our proposed hierarchical SVM classification 
+and  the  non-hierarchical  SVM  in  the  five  most 
+frequent  categories.  Our  proposed  hierarchical 
+SVM classification has a better performance, but 
+poor in the categories like  “client”,  “customer”, 
+“business”  and  “firm”.  We  now  try  to  explain 
+why the performance of those four categories is 
+poorer  than  other  categories.  The  topic  “client” 
+is  a  child  node  of  the  topic  “user”,  which 
+contains    five    sub-categories.

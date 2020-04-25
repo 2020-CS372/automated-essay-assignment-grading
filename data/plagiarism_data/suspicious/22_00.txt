@@ -1,0 +1,38 @@
+Figure  I: Software Architecture Optimization Process 
+Development of 
+object-style  architecture  and  consider  public  enthusiasm  for 
+object-orientedness by the object-oriented software framework. 
+Component based software engineering movement is also to be 
+established. 
+Popularization      phase:      2000-present    In    this    phase    is 
+characterized       by       production-quality,      commercialized, 
+supported  along  with  marketed  versions  of  the  technology. 
+Service    oriented    architecture,    agent-based    architectures, 
+specific  languages;  tools  and  development  environments  are 
+also established .Web based architecture platform which are IT 
+connected are also established. 
+ACME/IEEE  transaction  on  software  engineering 
+provides  information  about  software  architecture  which  is  a 
+part in software design
+" Software architecture of a program or computer system is 
+the  structure  or   structures  of  the  system,  which  comprise 
+software components, the externally visible properties of those 
+components, and the relationships among them" Bengtson et al. 
+2004 [8] " 
+We  found  that  analyzed  definitions are  not  supported  by  8 
+papers,  5   papers   are   not   providing   any   definition  at   all. 
+Remaining  three  papers  provide  definitions,  but  these  were 
+dropped. The   main   aim   of   the   optimization   task   is   typically 
+maximize   the  quality  of  software-architecture  under  given 
+constraints. Define the quality  of software architecture directly 
+by  the  Software  experts  is  not  possible.  But  it  is  related  to  a 
+number  of  system  attributes,  called  quality  Attributes  .The 
+schematic   diagram   of   Software   architecture   optimization 
+process as shown below. First,  the  process  input  is  architecture  representation  that 
+describes  the  optimization  of  Software  architecture.  Second, 
+the  subcategory  degrees  of  freedom  describe  changes  of  the 
+architecture    which    are    considered    as    variables    in    the 
+optimization. Third, the  subcategory  quality  evaluation  can  be 
+used to  describe  the  architecture  quality  evaluation procedures 
+.It   is   used   to   make   up   the   objective   function(s)   of   the 
+optimization  process. 

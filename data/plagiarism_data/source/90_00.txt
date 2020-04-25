@@ -1,0 +1,15 @@
+Figure 4 . Search Engine Flowchart 
+The core of the figure plagiarism detection system is the plagiarism retrieval search engine. The 
+search engines receive a user query in the form of sample figure.  It takes the sample figure and 
+pre-processes it to build the query vector that will be compared with the figure-document vectors 
+on  the  metadata  database.  Similarity  between  the  query  vector  and  each  figure-document  is 
+calculated  using  the  cosine  similarity  measure.  The  most  similar  figures  are  retrieved  from  the 
+database  using  their  figure  id,  ranked  and  presented  to  the  user. Figure  4  below  illustrates  the 
+setup.3.5. User Query 
+ 
+The user query is in the form of sample figures which can be supplied to the system individually 
+or be extracted from a specified document. Low level features of the query figure are extracted 
+similar to the database figures as highlighted in the Figure 5 below. Figure 5 Query Feature Extraction Steps 
+ 
+This system is using Query-By-Example. Figure 6 shows a typical flowchart figure that can be 
+supplied to the plagiarism detection system as a query. 

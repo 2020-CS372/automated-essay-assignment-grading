@@ -1,0 +1,47 @@
+Figure 1 : Generic Intelligent Enterprise Architecture
+EKM (Enterprise Knowledge
+Management)  is  a  broad  area  whose  ultimate  objective  is  to  inject
+knowledge into business processes, enable reuse of human expertise and
+to create system artifacts with rudimentary intelligence.
+Intelligent Enterprise is therefore:
+1.   agile   -- It can launch a production order very rapidly after, for instance,
+closing a Web-based purchase.
+2   adaptive, self-regulating, self-optimizing   -- It can adjust key business
+parameters (revenue, profit, cost) to the short-term, changing business
+climate.
+3 with   fuzzy borders, mesh-like structure  -- It can restructure and scale
+the organization to fit dynamic needs. As in outsourcing or complete
+outsourcing, for example
+4   self-aware, aware of the markets and able to learn   from them and adapt
+to them -- It can deal with internal inefficiencies, bottlenecks and
+latencies and coordinate them with perceived market changes, for
+example, knowing the level of goods being produced, correlating thisinformation with the market niche real-time situation, and jumping
+quickly into a price reduction campaign on the Web
+5 -   able to morph    into new and better forms -- this is a long-term process
+in which we may not even guess what will the final form look like. It will
+include not only adjustments of the business and operational parameters,
+but also major structural changes; deciding for mega-merge or drastic
+resizing while changing the industry branch, for example.In  a  very  rough  analogy  shown  in  the  Figure  1,  we  may  recognize
+enterprise sensors, effectors, a nervous system and brain corresponding to
+those  of  living  organisms,  each  with  particular  functionality.  CRM
+provides sensing functionality; EAI may represent nerves interconnecting
+ERP effectors with CRM and EKM being dispersed across enterprise, but
+centrally  coordinated  from  the  brain  (company  top  management).  The
+best current guess is that the future IE will be a hierarchically organized,
+decentralized and distributed system with a high level of self-regulating,
+local  autonomy.  Some  authors  are  reporting  about  implementation  of
+such  systems  combining  component-object  technology  with  intelligent
+agents  technology  to  create  complex  adaptive  systems  [1],  using  Web-
+services  as  the  glue  for  heterogeneous  enterprise  applications  [2]  or  a
+wide  variety  of  enterprise  middleware  technologies  for  integration
+purposes [3].
+Evolution towards Intelligent Enterprise
+One  may  wonder  why  contemporary  enterprises  are  not  already
+exhibiting these features and what's preventing them from doing so? It is
+very likely that the uncoordinated development of the above mentioned
+domains by several fiercely competing vendors -- each lacking a holistic
+view  or  suitable  integration  framework  (as  is  IE  architecture,  for
+example)  --  are  possible  causes  for  US  corporations  having  spent
+approximately  700  billion  dollars  (est.  between  1995  and  2000)  on
+enterprise  software  that  is  not  used  very  effectively  today  [Financial
+Times, Dec. 5, 2001]. 

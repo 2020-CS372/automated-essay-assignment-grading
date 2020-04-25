@@ -1,0 +1,71 @@
+Fig.  1. Registration procedure based on the modified registration method 
+ All  rigid  translation  parameters  ( , , y,)  are  used 
+to     register     (resample)     the     corresponding     raw 
+speckle  images  {I,(x,  y)} (i =        I,  ... ,  N)  in  the  next 
+step. 
+3) Resampling Raw Speckle Images  Using Cubic B­
+Spline  Interpolator: 
+The displacement due to disturbances need not 
+conform  to  integral  pixels,  so  the  rigid  translation 
+parameters       ( ,,, y;)     always       have       subpixel 
+precision.  Therefore,  a  resampling  interpolation  is 
+needed  to  register  the  raw  speckle  images  {I,(x,  y)} 
+(i =       1. .. N). 
+In  this  study,  the  cubic  B-spline  interpolator    is 
+used to calculate the intensity of non grid position  in 
+a two  dimensional  piecewise  polynomial way based 
+on  the  cubic  B-spline  function  (5)  which  is  smooth, 
+continuous and bounded 
+{  -     IdI2(Z - Idl)/Z, 
+{33 (d) = 
+2-ld13 
+6 
+' 
+0, 
+0::;  Idl < 1 
+l::;    ldl<Z 
+(5) 
+Z::; Idl 
+where    jdj  is   the   distance   from   the   interpolated 
+point. 
+Although     the     computational     cost     of     B-spline 
+interpolation is  not  very low,  it is used in this   study because   cubic   B-spline   interpolation   utilizes   the 
+non-integer parameters which  is preferable  over  the 
+nearest  neighbour  interpolation  .  In  addition,  cubic 
+B-spline     interpolation     prevents     the     effect     of 
+degeneration in linear  interpolation. 
+After   resampling,    the    registered    raw   speckle 
+images  l;(i  =         1,  ... ,  N)  are  obtained.  The  above 
+registration procedures are  summarized  in Fig.l. 
+B.  Temporal   LASCA    Based   on   Registered 
+Speckle Images 
+After    registration     as     described     earlier,     the 
+registered  raw  speckle  images  l;(i =        I,  ... ,  N)  are 
+then  analyzed  by  conventional  temporal  LASCA  to 
+obtain  maps  of  blood  vessels  and  flow.  The  whole 
+procedure    as    described    earlier    is    then    called 
+registered LASCA (rLASCA) 
+III. EXPERIMENT AND DATA ANALYSIS 
+A. Animal Preparation 
+The  experimental  protocol  used  in  this  study 
+has  been  approved  by  the  Animal  Care  and  Use 
+Committee  of  Johns  Hopkins  Medical  Institutions. 
+The   female   Sprague-Dawley   (SD)   rat   ( -        325   g) 
+was anesthetized with intraperitoneal (IP) injection 
+of  a mixture of  90 mg/kg of ketamine and  10 mg/kg 
+of     xylazine.     The     rat     was     constrained     in     a 
+stereotaxic   frame  (model   975,   Kopf   Instruments, 
+Tujunga,  CA).  A  midline  incision  was  made  over 
+the   scalp   and   the   tissues   over   the   bones   were 
+cleaned  with  a  blade.  A  6 x6  mm2  cranial  window 
+overlying  the  right  somato  sensory  cortex  (centered 
+at   4.5   mm   lateral   and   2.5   mm   posterior   to   the 
+bregma)  was  thinned  with  a  high  speed  dental  drill 
+(Fine     Science     Tools,     Inc.,     North     Vancouver, 
+Canada)     with     1.4     mm     steel     burr     until     half 
+transparent.  Saline  was  used  to  cool  down  the  scalp 
+during     the     surgery.     Rectal     temperature     was 
+maintained   at   37    "C   throughout   the   experiment 
+using  a  Gaymar  Heat  Therapy  System  (model  TP-
+500  TlPump,  Gaymar  Industries,  Inc.,  New  York, 
+NY). 

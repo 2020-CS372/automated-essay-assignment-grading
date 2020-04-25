@@ -1,0 +1,37 @@
+Figure 3: e block diagram for extracting the proposed new frontend based on robust MVDR spectrum of filtered  autocorrelation sequence,
+namely PMSR and R-PMSR features. e lter applied to unbiased autocorrelation sequence is the RAS lter according to (12). e subband
+weighting for R-PMSR features is calculated according to (14) and (6).
+Calculate its (N? 1)-length two-sided (biased) auto-
+correlation sequence which has a maximum at zeroth
+lag in the center,
+(iii) Pad one zero at the end to make an -length desired
+window. In other words, the RAS of clean speech can be calculated
+by applying the high-pass lter in (12) to the autocorrelation
+of noisy speech in the frame range specied by (2 + 1).
+According to (11), as long as the additive noise is stationary,
+the RAS of noisy speech will be equal to RAS of clean speech,
+and thus the e
+ect of noise is removed. However, we oenencounter non-stationary additive noise in ASR systems.Therefore, this technique cannot remove the distortions completely and only suppresses DC or slowly varying noise (or stationary noise). In order to reduce the noise residuals which
+remainaer applying RAS lter, we propose nding the
+MVDR spectrum of this ltered autocorrelation sequence.
+Moreover, to further suppress the noise e
+ects and thus and more robust features even in low SNRs, we propose using a robust MVDR approach similar to [11] which was explained in  Section 2.  erefore,  we  extract  the  proposed perceptual MVDR spectrum of relative autocorrelation sequence
+(PMSR) features from the subband MVDR power spectrum
+of filtered short-time autocorrelation sequence. e block
+diagram for extracting the proposed PMSR features is given
+in Figure 3(a). Also Figure 3(b) illustrates the procedure we
+proposed for extracting Robust-PMSR (R-PMSR) features. To
+calculate R-PMSR coe
+cients, we rst pass the short-time
+autocorrelation sequence through a RAS lter in (12). en
+we nd the proposed features from the robust perceptual
+MVDR spectrum of this ltered autocorrelation sequence.
+e robust perceptual MVDR spectrum is estimated similar
+to the approach explained in Section 2. However, according
+to our experiments given in Section 4, the subband SNRs of
+the signal passed through a RAS lter are increased compared
+to the case when no lter is applied to the autocorrelation
+sequence. is happens due to suppression of noise e
+ects
+by processing the signal with RAS technique. is causes
+the subband SNRs to be estimated more reliably.

@@ -1,0 +1,34 @@
+Figure 7: Device Manufacturer holds application design scenario 
+4. Apart from holding a platform for hosting and provision of 
+applications,  the  MNO  also  chooses  to  have  a  technical 
+department  to  develop  applications  internally.  In  this  case, 
+third-party applications developers are not involved and do not 
+contribute to the innovation loop (Figure 5).  5. In a slightly changed configuration of the previous scenario, 
+the  MNO  not  only  takes  an  active  role  on  the  application 
+stream, but also takes up the active role of marketing devices 
+to the end-user and takes control of additional functionalities 
+delivered  to  the  customer.  This  scenario  can  be  compared  to 
+the  bundle  offers  (mobile  phone  plus  medium/long  contract), 
+which  are  mobile  operators’  common  practice  across  Europe 
+and South Africa (Figure 6). 6. In this scenario, although the MNO still holds the customer 
+relationship    for    application    provisioning,    the    device 
+manufacturer  assumes  a  more  active  role  in  the  application 
+stream.  The  device  manufacturer  bundles  the  devices  with 
+software  that  is  made  available  to  the  consumer  through  a 
+platform  established  by  the  MNO.  In  addition,  the  MNO 
+maintains  its  role  of  marketing  devices  to  the  customer  (Fig. 
+7). 
+7. The device manufacturer holds application provisioning, but 
+as  part  of  a  deal  with  the  MNO,  the  device  manufacturer 
+provides the application provisioning platform to the MNO. In 
+a  nontransparent  way,  the   costumer  is  redirected  to  the manufacturer’s   platform   whenever   he   tries   to   buy   new 
+software  or  use  interfaces  of  the  application.  The  MNO  still 
+sells the CE device to the customer and charges him for each 
+application bought or used (Figure 8). 8. Similarly to the previous scenario, the device manufacturer 
+holds  application  provisioning,  but  opens  the  platform  to  the 
+contribution   of   application   developers.   In   this   case,   the 
+revenue  of  an  application  is  split  between  the  MNO,  the 
+manufacturer and the application developer (Figure 9). 2) Discussion 
+The mobile stream scenarios envisioned deliver the advantage 
+of  involving  the  MNO  and  hence  leverage  the  integration  of mobile   services   and   mobile   network   functionalities   with 
+consumer electronic devices. 

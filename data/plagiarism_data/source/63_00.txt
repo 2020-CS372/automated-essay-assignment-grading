@@ -1,0 +1,44 @@
+Figure 1: e block diagram for extracting RPMCC features [11]. e subband weighting is applied according to (6) and (7). 
+For this reason, we proposed a robust distortionless constraint in [11] by modifying
+this constraint such that the response of the lter at the
+frequency of interest has a gain which is determined by the
+signal to noise ratio at that frequency, instead of a unity
+gain. is process will be the same as weighting the power
+spectrum value at the frequency of interest based on the ratio
+of the energy of the signal to the energy of noise at that
+frequency which makes the MVDR spectrum robust against
+noise. erefore, the robust MVDR spectrum for all frequen-
+cies will be computed by [11] are the clean signal and noise at the frequency of interest, 
+, respectively.
+Hence, we assign larger weights to the components of the
+input signal at the frequencies least a
+ected by noise, whereas
+the others get smaller weights. In [11], employing the exper-
+imental ndings of psychoacoustics [20, 21], we proposed
+using the following weighting function with values between
+zero and one:
+where SNR	  is the signal to noise ratio computed from the
+ratio of the energy of noisy signal to noise in the th mel fre-
+quency subband and 
+	 is the gain that controls the steepnessof the weighting function. is weighting function was sug-
+gested because using the raw subband signal to noise ratios
+as the weighting factors did not lead to su
+cient recognition
+accuracies in low SNRs according to experimental results.e following optimum function, which is made up of the
+dierence between two sigmoidal functions, was proposed
+for in [11] based on recognition experiments
+diagram for extracting the proposed robust perceptual MVDR-based cepstral coe
+cients (RPMCC) accord-
+ing to the explained procedure is given in Figure 1. RPMCC
+features are extracted from the warped power spectrum by
+incorporating the PLP structure as in [11]. is gives better
+recognition results because exploiting the perceptual infor-
+mation always improves the speech recognition systems. e
+equal loudness curve and power law of hearing blocks are
+according to [3]. We calculate the warped power spectrum by
+applying the conventional triangular Mel-based filtered bank to
+the FFT-based periodogram. en the warped MVDR power
+spectrum is computed from the Mel-warped spectrumaer applying weighting to subbands. en, the cepstral features
+are calculated by applying IFFT to the Mel-scale MVDR
+log-spectrum. e Mel-warped spectrum is also known as
+subband spectrum in the area of speech recognition.

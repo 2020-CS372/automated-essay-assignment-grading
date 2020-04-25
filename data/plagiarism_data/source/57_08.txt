@@ -1,0 +1,51 @@
+Figure 9.   Device Manufacturer holds application provision to MNOs 
+scenario  In  this  scenario,  although  the  MNO  still  holds  the 
+customer  relationship  for  application  provisioning, 
+the device manufacturer assumes a more active role 
+in  the  application  stream.  The  device  manufacturer 
+bundles  the  devices  with  software  that  is  made 
+available   to   the   consumer   through   a   platform 
+established  by  the  MNO.  In  addition,  the  MNO 
+maintains   its   role   of   marketing   devices   to   the 
+customer (Figure 7). 
+7.    The     device     manufacturer     holds     application 
+provisioning, but as part of a deal with the MNO, the 
+Figure 9.   Device Manufacturer holds application provision to MNOs 
+scenario 
+device    manufacturer    provides    the    application 
+provisioning   platform   to   the   MNO.   In   a   non-
+transparent  way,  the  costumer  is  redirected  to  the 
+manufacturer’s  platform  whenever  he  tries  to  buy 
+new  software  or  use  interfaces  of  the  application. 
+The  MNO  still  sells the  CE  device  to  the  customer 
+and charges him for each application bought or used 
+(Figure 8). 
+8.    Similarly   to   the   previous   scenario,   the   device 
+manufacturer   holds  application  provisioning,  but 
+opens the platform to the contribution of application 
+developers.   In   this   case,   the   revenue   of   an 
+application    is    split    between    the    MNO,    the 
+manufacturer  and  the  application  developer  (Figure 
+9).Discussion 
+The  mobile  stream  scenarios  envisioned  deliver  the 
+advantage  of  involving  the  MNO  and  hence  leverage  the 
+integration    of    mobile    services    and    mobile    network 
+functionalities with consumer electronic devices. 
+In  all  these  scenarios,  the  MNO  charges  directly  the 
+customer either through the monthly bill or through one-time 
+micropayments per application bought or used. 
+Scenarios 3 and 6 reflect a two-sided business model and 
+enable    the    MNO    to    collect    revenues    from    selling 
+applications  to  consumers  and  from  application  developers 
+or  manufacturers  using  the  platform  to  host  and  market 
+applications.    Platform    adoption    by    developers    and manufacturers  would  mainly  depend  on  an  open  platform 
+and  attractive  revenue  sharing  rates.  In  these  scenarios 
+developers  and  manufacturers  collect  revenues  from  one  or 
+several    MNOs.    However,    compared    to    developers, 
+manufacturers  could  actually  have  more  bargaining  power, 
+since they control the underlying access layer to CE devices, 
+resulting in both actors trying to exert a certain control over 
+each other. 
+In scenarios 4, 5 and 7, the MNO and the manufacturer, 
+respectively,   control   the   entire   application   development 
+stream. 

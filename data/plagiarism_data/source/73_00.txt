@@ -1,0 +1,32 @@
+Figure 3 : Avoiding key forgery by a GTEK hash chain 
+This hash chain allows to verify each GTEK by applying 
+the same one way function to the previous one. To achieve 
+this  chained  authentication  the  last  GTEK  has  to  be 
+distributed to each MS in a secure way as it is the only key 
+in the chain which can not be authenticated by another one. 
+One  possibility  is  to  distribute  GTEKn  in  the  GKEK 
+update command message which is a unicast message and 
+encrypted by a MS related key. If  a  MS  receives  a  new  GTEK  via  a  broadcasted  GTEK 
+update  command  message  it  can  verify  its  integrity  by 
+applying   the   one   way   hash   function   f   to  it.  If  the 
+authentication   is   positive,   the   current   GTEK   can   be 
+overwritten  and  the  received  one  is  established.  If  the 
+authentication  fails,  the  MS  discards  the  message  and 
+requests  a  new  GTEK  via  the  unicast  Request/Reply 
+mechanism.Figure 3 shows this behavior. 
+ 
+To apply this algorithm, the key GKEK update command 
+message  has  to  be  capable  of  transporting  GKEK  and 
+GTEK  keys  together.  The  design  of  the  key  update 
+command  message  already  includes  both  keys  so  only  a 
+little  modification  is  necessary  here.  Additionally  the 
+GTEK state machine at BS must generate the GTEK hash 
+chain  and store  all  the  keys.  The  GTEK  state  machine  at 
+MS must add the functionality to authenticate GTEK keys 
+by  calculating  the  hash  function  and  comparing  it  to  the 
+previous key.  
+A  drawback  of  this  algorithm  is  that  it  has  a  reduced 
+forward secrecy. This means a MS, joining the group, can 
+decrypt  all  broadcasted  data  since  the  last  hash  chain 
+generation.  If  forward  secrecy  is  crucial,  the  hash  chain 
+has to be regenerated each time a MS enters the group. 

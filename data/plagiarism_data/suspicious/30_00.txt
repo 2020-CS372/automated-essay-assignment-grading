@@ -1,0 +1,39 @@
+Fig .2: TAM Architecture 
+The   signal   connected   to   the 
+WRCK  terminal  is  a  dedicated  clock  used  to  operate 
+IEEE 1500 functions. 
+3         TEST   ACCESS   MECHANISM   (TAM)   AND 
+WRAPPER 
+The design of test access mechanism (TAM)[4] and test 
+wrapper  is  of  critical  importance  in  terms  of  system 
+integration    since    they    directly    impact    hardware 
+overhead,  test  time,  and  tester  data  volume.  The  main 
+issues  in  this  context  are  wrapper  optimization,  core 
+assignment  to  TAM  wires,  sizing  of  the  TAMs,  and 
+TAM  wire  routing.  There  are  two  important  concepts 
+related  to  TAM,  viz.  test  pattern  source  and  sink,  and 
+core wrapper. The test pattern source is responsible for generating the test vectors or test stimuli for the desired 
+core  under  test.  The  test  pattern  sink  compares  the 
+fault-free  response  to  the  faulty  response  of  the  core 
+under test. The test pattern source and sink can be built 
+on-chip  or  off-chip.  There  are  several  ways  to  design 
+and  implement  a  TAM[5].  Some  of  the  common  TAM 
+architectures are: 1) daisy chained TAMs (that use serial 
+shifting of test data); 2) bussed TAMs (based on use of 
+complex  protocols);  3)  direct  access  TAMs  (for  cores 
+with  many  inputs  and  outputs);  and  4)  multiplexer 
+(MUX)-based  direct  access  TAMs.In  this  paper,  MUX-
+based direct access TAM architecture, as shown in Fig. 
+2  is  implemented.  The  TAM  is  used  to  drive  the  test 
+vectors from the test source[5][6], that is, from the fault 
+simulator   to   the   desired   core   under   test   and   to 
+transport  the  test  response  from  the  core  back  to  the 
+fault simulator. The selection of the core in the SoC was 
+implemented  as  part  of  the  TAM  architecture.  The 
+width  of  the  TAM  by  the  core  that  has  the  maximum number  of  input/output  (I/O)  pins  within  the  SoC  is 
+determined. There are other issues for consideration at 
+this  phase,  viz.  the  bandwidth  of  the  TAM  versus  the 
+cost of extra wires needed for its implementation, total 
+test   time   depending   on   the   TAM   bandwidth,   test 
+vectors from the source, and ultimately test data for the 
+individual   core.   

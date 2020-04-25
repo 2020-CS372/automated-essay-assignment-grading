@@ -1,0 +1,48 @@
+1   Introduction
+Large-scale  deployments  of  WSNs  have  already
+emerged in environmental and habitant monitoring [8,
+7], structural monitoring [3] and urban monitoring [6].
+A decisive variable for prolonging the longevity of a
+WSN is to minimize the utilization of the wireless com-
+munication medium. It is well established that commu-
+nicating over the radio in a WSN is the most energy
+demanding factor among all other functions, such as
+storage and processing [10, 4, 5, 11, 9].   The energy
+consumption for transmitting 1 bit of data using the
+MICA mote [1] is approximately equivalent to process-
+ing 1000 CPU instructions [5].In order to process continuous queries in Wireless
+Sensor Networks (WSNs), predominant data acquisi-
+tion frameworks typically organize sensors in a Query
+Routing Tree (denoted as T ) that provides each sensor
+with a path over which query results can be transmit-
+ted to the querying node. We found that current meth-
+ods deployed in predominant data acquisition systems
+sub-optimality construct T which leads to an enormous
+waste of energy. In particular, since T is constructed in
+an ad-hoc manner, there is no guarantee that a given
+query workload will be distributed equally among all
+sensors.  That leads to data collisions which represent
+a major source of energy waste.To facilitate our description, consider the example
+depicted on Figure 1 (left), which illustrates the initial
+ad-hoc query routing tree T created on top of a 10-node
+sensor network with the First-Heard-From (FHF) ap-
+proach 1.  Assume that the weight on each edge of T
+represents the workload (e.g., the number of transmit-
+ted tuples) that incurs when a child node communi-
+cates its partial results to its designated parent node.
+In the example,  we observe that node s2  is in?icted
+with a high workload (i.e., 5 child nodes) while other
+nodes at the same level (i.e., s3 and s4), only have zero
+and one child nodes, respectively. Notice that both s8
+and s10 are within communication range from s3 (i.e.,
+the dotted circle), thus these nodes could have chosen
+the latter one as their parent. Unfortunately, the FHF
+approach is not able to take these semantics into ac-
+count as it conducts the child-to-parent assignment in
+a network-agnostic manner.
+Unbalanced topologies pose some important energy
+challenges which are summarized as follows:
+Decreased Lifetime and Coverage: Since the ma-
+jority of the energy capacity is spent on transmitting and receiving data, the available energy of sensors with
+a high workload will be depleted more rapidly than
+the others. 

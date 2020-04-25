@@ -1,0 +1,40 @@
+Fig.2: directed graph reflect the dependency between modules
+After handling the module the set will need to be
+updated then the steps will  be repeated to  select another
+module to be handled. Figure 1  show these steps.IJ.B HEURISTIC MODEL ENCOMPASSING RIPPLE
+EFFECT (HRE)
+To keep track on the ripple effect,  and to be sure that the
+change propagation  in  a  way that  keep the  dependency
+between module consistent, a model is constructed to choose
+the  module which will  be traced from a set  of affected
+modules. This model depends on the graph representation and
+the heuristic function.
+The following steps show how this model works:
+1- Define the set ofaffected modules, the set will look like:
+{(modulel,  mark,,  costl),  (module2,  mark2,  cost2)...
+(module., mark., cost-) ......
+Where:
+module, The ith  module in the set mark, Number of marks
+assign to the ith module, initially set to 1  costs The cost assign
+to the ith module, initially set to 0
+These modules in the set will be in the module's neighbor.
+Module neighbors set in the set of all  modules with have
+direct arrow to the changed module. For example if module C
+in  figure 2 is  changed then the module neighbors set will
+contain A, B, D, M. All these modules will be marked as 1,
+and have a cost equal to zero.
+2- The cost of the module in  the set will  be changed
+according to a heuristic function. The directed arrow between
+two node in the graph mean that there a relation between these
+two node.  The Relation  will  be association,  aggregation,
+inheritance and/or invocation or any other king. Direction of
+arrow reflects dependency that is which module depends on
+which. For example in figure 2 the arrow between M to C
+mean that module Minvoke module C.
+For further information about relation and dependencies
+between system modules refer to [1],[ 11]
+The heuristic function that will calculate the cost depend
+on:
+- Number of ongoing arrows to the module (1): which mean
+that many modules depend on this module, and any change to
+this module will affect many modules.

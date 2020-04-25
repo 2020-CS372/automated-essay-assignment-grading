@@ -1,0 +1,53 @@
+This  design  was  a  carryover 
+from   porcelain   arresters.   The   second 
+design,  targeted  specifically  to  polymer 
+arresters, integrates the disconnector into 
+the  body  of  the  insulating  bracket.  This 
+integrated  designs  attaches  to  the  base 
+end of the arrester.  
+ 
+Regardless of which approach is utilized, 
+both designs use the same basic internal 
+design approach. An unprimed cartridge 
+is  used  to  promote  separation  of  the 
+disconnector.  This  cartridge  is  typically 
+located  in  the  vicinity  of  a  sparkgap, 
+which  is  oriented  in  parallel  with  some 
+type of electrical grading component.  Manufacturers have utilized a variety of 
+grading         components,         including 
+electronic        capacitors,        electronic 
+resistors,    conductive    polymers,    and 
+higher wattage resistors.The   grading   component,   typically   a  
+molded        resistor        in        currently 
+manufactured  US  designs,  provides  a 
+path for normal arrester internal grading 
+and  external  leakage  currents  to  flow 
+from  the  base  of  the  arrester  to  ground. 
+The   sparkgap,   located   electrically   in 
+parallel   with  the  resistor,  provides  a 
+bypass    function    when    the    arrester 
+assembly is subjected to abnormal surge 
+duty.  Voltage  drop  across  the  grading 
+component  during  this  abnormal  surge 
+duty causes the bypass gap to sparkover.  
+ 
+For   required   arrester   durability   tests 
+defined  in  the  standard,  the  arrester  is 
+expected  to  withstand  the  duty  without 
+failing  and  the  detonator  is  expected  to 
+withstand  the  duty  without  detonating. 
+The  thermal  design  of  the  disconnector 
+is   such   that   there   is   not   sufficient 
+coulomb  content in  the  sparkgap  region 
+to   cause   the   adjacent   cartridge   to 
+detonate  during  arrester  durability  tests. 
+However,  if  the  surge  duty  is  sufficient 
+to    cause    the    arrester    to    fail,    the 
+subsequent  flow  of  system  fault  current 
+available   at   the   arrester   location   is 
+intended to provide sufficient heating of 
+the cartridge to cause it to detonate. The 
+design  of  the  disconnector  is  such  that 
+this  detonation  then  causes  the  ground 
+lead to be separated from the base end of 
+the arrester. 

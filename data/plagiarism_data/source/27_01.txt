@@ -1,0 +1,55 @@
+Figure 2. The model n Web-HIPRE 
+114  and  0.401  of 
+local   weight,   followed   by   economic   and   cultural 
+aspects of 0.104 and 0.080 respectively. It is important 
+to  note  that  priority  of  security  criterion  here  might 
+reflects  the  specific  environment  and  it  can  be  vary 
+depends on different environments. 
+Then,  Table  1.B  to  1.E  illustrate  local  weight  of 
+comparative  alternatives  according  to  criteria  which 
+describes  specific  local   weight   value  of  all  three 
+alternatives (confidentiality, integrity, and availability). 
+In terms of consistency, it is important to explain that 
+although   both   table   1.A   and   1.B   show   a   little 
+inconsistency  measures  (0.127  and  0.121),  it  is  still 
+acceptable as long as it below 0.200 (as the maximum 
+value  for  consistency  measure  or  CM)  [7]. Therefore, 
+among all matrixes, the most appropriate result showed 
+by  table  1.E  with  CM  value  of  0.000  which  means 
+completely consistent.  
+Then, we perform the last step of AHP analysis by 
+calculating  all  local  weights  and  aggregate  them  into 
+global  weight  value  or  composite  overall  priorities  to 
+obtain the overall priority.  
+The following figure shows the graph of composite 
+overall priorities in Web-HIPRE. The  result  clearly  indicates  that  technology  and 
+management   are   considered   more   important   than 
+economic  and  cultural  considerations.  This  finding 
+reflects  imbalanced  approach  of  information  security 
+policy development in government sector. Whereas, in 
+order to be effectively applied, cultural insights [29] as 
+well  as  economic  perspectives  [11]  should  be  given 
+more  portions  in  shaping  the  information  security 
+policy development at government level.   
+This is inline with our previous findings in [12], that 
+information  security  is  one  of  e-government  critical  
+issues in Indonesia. Then,  the  last  step  of  the  analysis  processes  is 
+aggregating  the  total  priority  of  both  criteria  and 
+alternatives.Table  2  shows  the  final  rank  or  priority  of  to 
+achieve  information  security  policy  as  the  goal.  In 
+terms   of   security   alternatives,   it   is   found   that 
+availability of 0.432 is preferred as the top requirement 
+followed by confidentiality which accounted for 0.387. 
+Integrity   seems   do   not   become   priority   within 
+government agencies that only accounted for 0.181.  
+In  addition,  this  final  result  also  shows  that  there 
+have    been    more    concern    on    management    and 
+technology   aspects   of   information   security   which 
+accounted for 0.415 and 0.402 respectively compare to 
+economy  and  cultural  concerns  which  only  0.104  and 
+0.079 respectively.  
+Based   on   these   findings,   it   seems   government 
+agencies still with the focus on availability of data and 
+information  systems  in  its  environment. This  also 
+reflects  the  top  priority  of  information  technology 
+efforts by government agencies in Indonesia. 

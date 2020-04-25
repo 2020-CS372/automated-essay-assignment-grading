@@ -1,0 +1,49 @@
+Figure 1. SAPP Structure
+The  time-based  differentiation  in  pricing  arises 
+from  the  physical  constraint  in  that  the  produced 
+electrical energy must be instantly consumed.  The 
+storage   of   electrical   energy   is   not   practical.   
+Energy banking and pumped storage schemes are 
+the  exceptions  for  electrical  energy  storage  for  a 
+very   small   percentage   of   the   total   electricity 
+generated.  
+2.      Case   Study   for   the   Southern   African 
+Power Pool 
+ 
+The  Southern  African  Power  Pool  (SAPP)  is  a 
+regional  body  that  was  formed  in  1995  through  a 
+Southern     African     Development     Community 
+(SADC)  treaty  to  optimise  the  use  of  available 
+energy  resources  in  the  region  and  support  one 
+another  during  emergencies.    The  Co-ordination 
+Centre  for  the  power  pool  is  located  in  Harare, Zimbabwe.The  pool  comprises  of  twelve  SADC 
+member  countries  represented  by  their respective 
+national power utilities.SAPP  is  managed  by  the  decision-making  that 
+occurs  in  the  hierarchical  structured  committees 
+illustrated  in  Figure-1.    Reporting  to  the  Energy 
+Ministers of SADC is the Executive Committee that 
+is   composed   of   the   Chief   Executives   of   the 
+participating  utilities.    Reporting  to  the  Executive 
+Committee  is  the  Management  Committee,  which 
+is   composed   of   senior   managers   from   the 
+transmission system operations and energy trading 
+divisions of each utility. The     Management     Committee     collates     the 
+proceedings  of  the  sub-committees  of  Operating, 
+Planning   and   Environmental,   summarizes   the 
+proposals  and  recommendations  and  presents  bi-
+annually the report to the Executive Committee.  In 
+the      SAPP      proceedings      of      1999,      the 
+recommendation    from     the     Operating     Sub-
+Committee  to  introduce  a  competitive  market  for 
+short-term   energy   trading   was   submitted   and 
+approved.    This  paper  will  discuss  in  depth  the 
+design and rules of the short-term energy market. 
+The  results  of  more  than  two  years  of  trading 
+activity    will    be    analysed    for    recommended 
+conclusions.  
+3.      Design of the Short Term Energy Market 
+ 
+The goal of standard market design is to establish 
+an  efficient  and  robustly  competitive  wholesale 
+electricity marketplace for the benefit of consumers 
+[1].   

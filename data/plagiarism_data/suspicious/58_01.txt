@@ -1,0 +1,37 @@
+ Figure 2. Reusable component structure  
+The  behavior  correctness  of  such  an 
+integrated system can be verified using an approach similar
+to  that  in  [2].  The  behaviors  specified  in  other  models orlanguages   can   be   converted   to   this   model   using
+translators. The   integrated   behaviors   can   then   be
+specified  in  a  Control  Plan  program  for  remote  and 
+runtime  behavior  reconfiguration.  Our  architecture  also
+separates   other   non-functional   constraints,   especially
+timing  and  resource  constraints,  from  functionality  and
+behavior   integration   so   that   these   constraints   can   be 
+analyzed  and  verified  incrementally  and  as  early  as  at
+design phase. 2. Component structure 
+Components are pre-implemented  software  modules  and 
+treated  as  building  blocks  in  integration.  The  integrated
+embedded   software   can   be   viewed  as   a   collection   of 
+communicating  reusable  components.  Figure  1  shows  the
+embedded      software      constructed      by      integrating
+components.The component structure defines the required information
+for components to cooperate with others in a system.Our
+software component is modeled as a set of external interfaces
+with registration and mapping mechanisms, communication
+ports, control logic driver and service protocols, as shown in
+Figure 2. 
+External   interfaces.   External   interfaces   define   the 
+functionality of the component that can be invoked outside 
+the  component.  In  our  model,  external  interfaces  are 
+represented as a set  of  acceptable  events  with  designated 
+parameters.  A  component  with  other  forms  of  external
+interfaces, such as function calls, can be integrated into the 
+system by mapping each of them to a unique event. Using
+events   as   external  interfaces  enables  operations  to  be 
+scheduled   and   ordered   adaptively   in   distributed   and 
+parallel   environments,   and   enables   components   from
+different vendors (possibly implemented with  different  considerations)  to  be  integrated  into  the
+system without the source code. 
+External   interfaces   are   generally   defined   as   global
+(external)  events,  which  are  system-wide  information.

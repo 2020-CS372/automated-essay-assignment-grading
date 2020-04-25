@@ -1,0 +1,38 @@
+Fig. 5. The proposed HAF-HOC scheme, along with a working example.  
+As  far  as  the  noise
+embedded in the recordings is concerned, such as super-
+imposed artifacts from various sources, it has been reported
+[55],  [56],  [57]  that  they  are  effectively  eliminated  by
+appropriate  bandpass  filtering.  More  particularly,  the Fig. 4. Averaged EEG signal in the time domain, corresponding to each
+one  of  the  six  basic  emotions  for  channel  3,  along  with  the
+corresponding frequency content, estimated using 2,048-point FFT.influence  of  eye  movement/blinking  is  most  dominant
+below  4  Hz;  heart-functioning  causes  artifacts  around
+1.2 Hz, whereas muscle artifacts affect the EEG spectrum
+above 30 Hz. Nonphysiological artifacts caused by power
+lines are clearly above 30 Hz (50-60 Hz). Consequently, by
+extracting the alpha and beta frequency bands only from the
+acquired EEG recordings, much of the noise influence is
+circumvented.
+Fig. 4 depicts an example of the averaged EEG signal in
+the time domain, corresponding to each one of the six basic
+emotions  for  channel  3,  along  with  the  corresponding
+frequency content, estimated using 2,048-point Fast Fourier
+transform (FFT).4   METHODOLOGY
+The overall structure of the HAF-HOC scheme, along with a
+working example, is depicted in Fig. 5. After the preproces-
+sing stage for signal segmentation and denoising, the EEG
+signal is input to the HAF section of the HAF-HOC scheme.
+The  role  of  HAF  is  to  isolate  the  emotion-related  EEG
+characteristics,  facilitating  the  task  of  the  feature  vector
+extraction that follows. To achieve this, HAF incorporates
+GA that acts upon the representation of the EEG signal on
+the EMD space. In the latter, the EEG signal is decomposed
+through  an  iterative  sifting  process  [14]  into  a  series  of
+Intrinsic Mode Functions (IMFs) that correspond to differ-
+ent oscillatory modes of the EEG signal (see the working
+example).  During  the  sifting  procedure,  the  oscillation
+mode is qualified as an IMF according to two conditions:
+1) For the entire data set, the number of extrema and the
+number of zero crossings are either equal or differ at most
+by one, and 2) the mean value of the envelope defined by the  local  maxima  and  the  mean  value  of  the  envelope
+defined by the local minima are zero at any point [14].

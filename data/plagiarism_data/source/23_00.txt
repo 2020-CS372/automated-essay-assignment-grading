@@ -1,0 +1,40 @@
+Fig. 1. Local model internal model control.
+ In practice, the tuning of conventional PI or PID controllers can be very
+time-consuming whereas the IMC design procedure is very simple and reliable. In this paper,
+the design effort of the IMC and conventional controller design methods will be discussed and
+control results will be compared by application to nonlinear control of an industrial-scale heat
+exchanger. Copyright  c 2002 IFAC
+Keywords: Nonlinear Control, Internal Model Control (IINTRODUCTION
+In  process  control,  internal  model  control  (IMC)
+(Morari and Za?riou, 1989) has gained high popular-
+ity due to the good disturbance rejection capabilities
+and robustness properties of the IMC structure. Fur-
+thermore, the controller design is simple and straight-
+forward such that the controller can easily be tuned
+by the process engineer. The IMC controller design
+is theoretically well explored for linear processes. In
+practice, however, almost every process displays non-
+linear behavior especially if it is driven in a wide oper-
+ating range. Hence, the need emerges to extend the lin-
+ear design procedure to nonlinear systems (Economou
+et al., 1986).
+Neural networks as well as fuzzy systems have been
+widely employed for the representation of nonlinear
+systems and the idea of internal model control can
+be combined with these types of models (Hunt et al.,
+1992). In this paper, a local linear neuro-fuzzy model will be used (Murray-Smith, 1994; Nelles, 2000; Tak-
+agi and Sugeno, 1985), see Fig. 1. Here, the output of
+the model is calculated as an interpolation of locally
+valid linear models. Local model architectures have
+several advantages over conventional black-box ap-
+proaches. On the one hand, their transparent architec-
+ture allows the combination of prior knowledge about
+the process with measured identi?cation data. On the
+other hand, classical linear control design methods can
+be utilized for nonlinear controller design (Babu?ska and Verbruggen, 1996; Hunt and Johansen, 1997). For
+the IMC approach, this local linearity can be exploited
+directly and a nonlinear gain-scheduled controller can
+be obtained.
+It can be shown that for simple linear models, the IMC
+loop can be transferred to classical feedback structures
+resulting in e.g. 

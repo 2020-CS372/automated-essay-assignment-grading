@@ -1,0 +1,59 @@
+Figure 2. Basic Architecture 
+   Finally,  the  rightmost 
+column  names  the  corresponding  target  construct  in 
+OWL-S  specifications.  For  instance,  in  a  UML  class 
+diagram, a UML class combined with a << Service >> 
+stereotype  is  used  to  model  a  service  instance  in  an 
+OWL-S  specification,  while  a  UML  association  with  a 
+<< presents>> stereotype is used to identify a “presents” 
+property in an OWL-S specification. 
+These  UML  extensions  are  used  to  facilitate  the 
+transformation process. The stereotypes help to identify 
+which   classes   must   be   generated   in   the   OWL-S 
+description.   Tagged   values   correspond   primarily   to 
+property values in the output representation. The custom 
+data types are necessary to represent the XML Schema 
+data types. There are other ways  that UML  could have 
+been utilized. For example, attributes with default values 
+could  have  been  used  instead  of  tagged  values  (our 
+current    method);    however,    the    latter    method    is 
+conducive to the transformation process. 
+ In general the transformation rules to map from the 
+UML  model  to  the  OWL-S  specification  are  straight 
+forward.    The    main    classes    marked    with    the 
+<<Service>>, <ServiceProfile>>, <<ServicModel>> and 
+<<ServiceGrounding>>  stereotypes  each  map  into  a 
+separate   output   file.   These   constructs   are   linked 
+semantically  through  the  stereotyped  associations  in  a 
+diagram   (e.g.   <<presents>>,   <<describedBy>>,   and 
+<<supports>>)  and  are  used  to  generate  the  respective 
+elements  in  output  documents.  Tagged  values  are  used 
+primarily    to    model    properties    in    the    OWL-S 
+specification,  especially  in  the  ServiceProfile.  Custom 
+data  types  are  used  to  model  XML  Schema  data  types 
+that are used typically used in an OWL-S specification. 
+At present, we allow only one service to be specified per 
+diagram.    In    future    work,    we    will    expand    the 
+transformation process to allow for multiple services. The  basic  architecture  of  the  conversion  process  is 
+shown  in  Figure  2.  First,  a  UML  Class  Diagram  is 
+created in Poseidon [8] with the UML profile for OWL-
+S.  The  class  diagram  is  exported  in  XMI  format.  The 
+conversion  tool  is invoked  from  the  command-line  and 
+runs   multiple   transformations   on   the   input   file   to 
+produce the corresponding ServiceProfile, ServiceModel 
+Service and ServiceGrounding OWL-S documents. The 
+transformations    come    in    the    form    of    XSLT 
+transformations  automatically  performed  on  an  XMI 
+file. From the standpoint of MDA terminology, the  4. Example 
+ 
+The  CongoBuy  service  is  an  example  developed  by 
+the  OWL-S  working  group  to  demonstrate  the  features 
+of  the  OWL  ontology  for  services.  The  example  is  a 
+fictitious B2C company that offers a number of services 
+including the ability for customers to buy books on the 
+web. 
+ 4.1. Specification Figure  3  shows  a  class  diagram  that  models  the 
+CongoBuy    service    with   the    OWL-S   stereotypes. 
+Specifically,  it  shows  the  specification  for  an  Express 
+CongoBuyService that allows a user to directly purchase 
+a  book  without  using  a  browsing  service.  

@@ -1,0 +1,33 @@
+Fig. 1.  Illustration of the biological immune system.
+The basic concept of the proposed scheme is
+described in the following sections. The related biological
+immune system is described in Section 2, whereas Section 3
+presents the developed methodology of RIN in detail. Section 4
+illustrates  the  effectiveness  of  the  proposed  methodology
+through some simulations. Finally, Section 5 concludes the
+paper.
+2.  How biological immune system works
+The immune system protects living organisms from foreign
+substances such as viruses, bacteria, and other parasites (called
+antigens). The body identi?es invading antigens through two
+inter-related  systems:  the  innate  immune  system  and  the
+adaptive immune system. A major difference between these
+two systems is that adaptive cells are more antigen-speci?c and
+have greater memory capacity than innate cells. Both systems
+depend upon the activity of white blood cells where the innate
+immunity is mediated mainly by phagocytes, and the adaptive
+immunity is mediated by lymphocytes as summarized in Fig. 1.
+The  phagocytes  possess  the  capability  of  ingesting  and
+digesting several microorganisms and antigenic particles on
+contact. The adaptive immune system uses lymphocytes that
+can  quickly  change  in  order  to  destroy  antigens  that  have
+entered the bloodstream. Lymphocytes are responsible for the recognition  and  elimination  of  the  antigens.  They  usually
+become active when there is some kind of interaction with an
+antigenic stimulus leading to the activation and proliferation of
+the lymphocytes. Two main types of lymphocytes, namely B-
+cells and T-cells, play a remarkable role in both immunities
+[34]. Both B-cell and T-cell express in their surfaces antigenic
+receptors highly speci?c to a given antigenic determinant. The
+former  takes  part  in  the  humoral  immunity  and  secrete
+antibodies by the clonal proliferation while the latter takes part
+in cell-mediated immunity.

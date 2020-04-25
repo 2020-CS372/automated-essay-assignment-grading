@@ -1,0 +1,50 @@
+Figure 1.Global Hand Posture Detection and Recognition
+the main objectives of our approach. able  to  work  under  different  degrees  of  scene  background 
+complexity  and  illumination  conditions,  which  shouldn’t 
+change   during   the   execution.   The   following   processes 
+compose the general framework: 
+ 
+a) Initialization: the recognizable postures are stored in a 
+visual memory, which is created in a start-up step. In order 
+to configure this memory, different ways are proposed. 
+ 
+b) Acquisition: a frame from the webcam is captured. 
+ 
+c)  Segmentation:  each  frame  is  processed  separately 
+before  its  analysis:  the  image  is  smoothed,  skin  pixels  are 
+labelled, noise is removed and small gaps are filled. Image 
+edges are found, and finally, after a blob analysis, the blob 
+which represents the user’s hand is segmented. A new image 
+is  created  which  contains  the  portion  of  the  original  one 
+where the user’s hand was placed. 
+ 
+d)  Pattern  Recognition:  once  the  user’s  hand  has  been 
+segmented, its posture is compared with those stored in the 
+system’s    visual    memory    (VMS)    using    three    stage 
+recognition   process   Kalman   filtering   process,   hidden 
+Markov models and graph matching.   
+ 
+e)  Executing  Action:  finally,  the  system  carries  out  the 
+corresponding  action  according  to  the  recognized  hand 
+posture the output of the system can then letter / digit / voice 
+/ word. III.      HAND POSTURE DETECTION 
+The  operators  developed  for  image  processing  must  be 
+kept  low  time  consuming  in  order  to  obtain  the  fast 
+processing   rate   needed   to   achieve   real   time   speed. 
+Furthermore,   certain   operators   should   be   adaptable   to 
+different light conditions and backgrounds. Best  results  were  achieved  using  a  mean  filter,  among 
+the  different  approaches  of  proposed  lineal  filters.  The 
+appearance  of  the  skin-tone  color  depends  on  the  lighting 
+conditions.  Artificial  light  may  create  reddish  pictures,  as 
+shown  in  Figure  3,  which  means  different  values  for  skin-
+tone  colors.  The  histograms  on  the  left  side  of  figure  3 
+represent   the   distribution   of   skin   hue   and   saturation 
+components  for  artificial  light  (red  line)  and  natural  light (blue  line).  Values  are  shifted  to  the  right  for  the  artificial 
+light  values.  A  lighting  compensation  technique  that  uses 
+“reference  average”  was  introduced  to  normalize  the  color 
+appearance.  The  normalization  operation  subtracts  from 
+each  pixel  color  band  (R,G,B)  the  average  of  the  whole 
+image, so odd colored images like the reddish one are turned 
+into  more  natural images.  The histograms  on the right side 
+of figure 3 show that after this operation, skintone colors in 
+different light conditions are much more similar. 

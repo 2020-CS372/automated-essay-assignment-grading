@@ -1,0 +1,75 @@
+Figure 1.   Agent automatic negotiation protocol model 
+The  first  phase  is  based  on 
+multi-Agent  automatic  negotiation  whose  negotiation  object 
+includes task starting time, task ending time and the relation of 
+the  tasks;  The  second  phase  is  the  negotiation  of  Agent’s 
+communicating  conditions  whose  negotiation  object  include 
+corresponding  security  policy  and  network  service  quality^
+QOS?.
+According   to   the   top   analysis   talks   about   with   the 
+correlative  language  behavior  academic  theories,  we  say  the 
+Agent automatic negotiation correspondnce in the procedure to 
+state  row  word  certain  for:  request,  promise,  refuse,  advise, 
+counter advise. In view of agreement  presence overtime event 
+and   agent   unsolicited   message   transmission,   so   increase 
+overtime^timeout?status  and  inform  ^inform?state  row 
+word    that.     Communication     protocol     engine     of     the 
+communication process state as follows of the agent: 
+Stateinner I =Started|  Requested  |  Accepted  |  Refused  | 
+Promised | Informed | Advised | CAd-vised | Timeout | Stopped
+See  Fig.1:  Agent  automatic  negotiation  protocol  can  be 
+divided  into  information  transmission  layer,  buffer  channel 
+layer and Agent negotiation protocol layer from bottom to top, 
+of  which  buffer  channel  layer  C  is  one  of  the  needed  layers 
+between  Agents  to  realize  asynchronous  communication.  If  it 
+will    realize    point-to-point    synchronous    communication 
+between  Agents,  it  can  do  communication  directly  through 
+channel   C.   As   to   the   description   of   Agent   automatic 
+negotiation,  it  mostly  focus  on  Agent  negotiation  protocol 
+layer, while for the other layers, it only describes their services 
+and  running  environment  in  brief.  In  essence,  the  function  of 
+Agent negotiation protocol layer is the description of process.(1) The service provided by each protocol layer 
+See Fig.1: a.  Information  transmission  layer:  being  in  position  to 
+transmit  information  data  between  Agents  in  sequential  way 
+and correctly; Buffering  channel  C0  and  C1  layer:  providing  Agent 
+automatic negotiation layer with the services described; 
+c.  Agent  automatic  negotiation  protocol  layer:  supplying 
+Agent with credibility, efficient negotiation control and policy. 
+(2)   Description   of   Agent   negotiation   protocol   layer 
+functions: Fig.2  receive  agreement  on  state  vicissitude  chart'  from 
+the view of agent negotiation starter Among them: arrowhead 
+direction  are  the  flow  direction  of  Agent  information;  The 
+Recv  means  a  certain  message  in  roger  in  right  connecting; 
+send  stand  for  exactness  forward  to  some  information ?
+Following behind the Recv/ Send is a message type, both state 
+vicissitude picture with state refused and accepted implication 
+negotiatory amphi-with the result that ?negotiation the rough 
+and  smooth 'along  with  it  show  that  negotiatory  terminal 
+status. 
+The  Agent  A  describe  with  Agent  B  whole  negotiation 
+procedural not formal as follows: Agent A first of all dispatch 
+negotiation  beg  of  Agent  B  received  solicit  aback,  toward 
+request  message  proceed  analyses,  could  as  per  three  strain 
+scene  dispose  to?the  first  thing,  in  the  event  of  Agent  B 
+receivability the solicit of Agent A, those Agent B  to Agent A 
+dispatch  take  send  ,  else  dispatch  thumb  advise '   down 
+through  upon,  the  service  request  block  mode'  of  the  such 
+negotiation  scene  as  conventional  C  /  S.  the  second  thing, 
+Provide  some  Agent  B  can  provide  serve  of  instruct,  but 
+because  of  the  restrict  of  the  resource  of  system  can't  very 
+much the serve, so the Agent B can put forward to Agent A the 
+serve promises, the Agent A handles Agent B the commitment 
+of  serve  can  proceed  very  much:  Reject  or  accept.  the  third 
+thing, The Agent B thinks after analyzing the Agent A request 
+Agent A some items modification within request empress, can 
+satisfy  the  Agent  A  request  still,  like  this  Agent  B  after 
+proceeding Agent A some items within request to modification, 
+conduct and actions the suggestion sends out to the Agent A. 
+(3)   Agent   consults  the   working   environment  that  the 
+protocol needs 
+a.   Agent   consult   agreement   lower   floor   information 
+transmission layer of layer can is it is it spread mistake travel 
+the  mistake  to  the  upper  strata  agreement  to  get  to  measure automatically.  Namely  the  information  transmission  layer  has 
+fault-tolerant ability. 
+b. The array of every part of one layer of news transmitted 
+of the information transmission should be correct. 

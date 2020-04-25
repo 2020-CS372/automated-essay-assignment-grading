@@ -1,0 +1,30 @@
+Figure 1.  ?Sequence of Events   
+Consideration of the dual channel setting, in 
+which the manufacturer is both a supplier and a competitor 
+to  the  retailer,  distinguishes  our  work  from  this  literature. 
+We    study    retail    channel    competition    between    the 
+manufacturer's  direct  channel  and  an  independent,  but  not competition at the manufacturer or retailer levels. The  rest  of  the  paper  is  organized  as  follows.  In 
+section  2,  we  describe  the  overall  model.  In  section  3,  we 
+give consumers' channel choice. In section 4, we determine 
+optimal  dual  channel  strategies  for  the  manufacturer  and 
+characterize how these strategies change study with respect 
+to the channel environment. In section 5 given conclusions. 
+2.     The overall model 
+Consider a manufacturer who sells a product through his 
+direct  online  channel  and  retail  channel  during  a  sales 
+season.  The   sequence   of   events   is   as   follows   (and 
+summarized in Figure 1). During the contracting stage, the manufacturer sets the 
+wholesale price w and offers the contract to the retailer. If 
+the    retailer    accepts    the    contract,    the    manufacturer 
+establishes  a  retail  channel  to  sell  his  product.  Given  the 
+wholesale  price,  both  firms  make  operational  decisions 
+without  observing  each  other's  actions.  In  particular,  the 
+retailer  chooses  an  inventory  level  without  observing  the 
+manufacturer's  decision  for  the  direct  channel.    Choosing 
+an inventory level is equivalent to setting the service level s, 
+the probability of not stocking out during the sales season. 
+The  problem  can  be  formulated  in  either  variable.  The 
+manufacturer  sets  the  delivery  lead  time  t  in  the  direct 
+channel  without  observing  the  retailer's  decision.  During 
+the  sales  season,  consumers  decide  which  channel  to  buy 
+from (consumers' channel choice). 

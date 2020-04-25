@@ -1,0 +1,38 @@
+Figure 1 - Lifecycle overview of the AIRS algorithm
+The review is intended to provide insight into the functional workings of the 
+technique without getting too deep into implementation specific issues. Also provided in 
+this section is a review of the configurable user parameters of the system and their impact 
+on the functioning of the system. For a description of the user configurable parameters 
+with an empirical view of their effect on the system, see [2]. 
+ 
+It should be noted that this overview is restricted to the AIRS2 or version two of the 
+AIRS algorithm [10]. It has been explained to the author (private communication) that the 
+AIRS1 or version one of the technique [1,11] is now deprecated in favour of the second 
+revision of the technique. Please see section 4. for a review of the AIRS1 and AIRS2 
+algorithms and their specific differences. 3.1  The Algorithm 
+The function of the AIRS algorithm is to prepare a pool of recognition or memory cells 
+(data exemplars) which are representative of the training data the model is exposed to, 
+and is suitable for classifying unseen data.The lifecycle of the AIRS system is as 
+follows:3.1.1  Initialisation 
+This step of the algorithm consists of preparing the data for use in the training process, 
+and preparing system variables. The training data is normalised so that the range of each 
+numeric attribute is in the range [0,1]. An affinity measure is required for use through the 
+training process. The typical measure used is the inverted Euclidean distance. The 
+important point here though is that the maximum distance measured between any two 
+recognition cells or antigen and recognition cell (both simply data vectors) must also be 
+in the range [0,1]. This can be achieved by adding the following step to the data 
+normalisation process: 
+ 
+n
+Value
+normalised
+Value
+normalised
+1
+·
+=
+ 
+Equation 1 - Calculation for ensuring that the distance between any two vectors is between 0 and 1 
+ 
+where the normalised value is data attribute in the range of [0,1], and n is the number of 
+attributes used in the distance evaluation. 
