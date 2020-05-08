@@ -1,16 +1,22 @@
 from csv import DictReader
+from nltk import sent_tokenize
 from nltk.parse.corenlp import CoreNLPServer, CoreNLPParser
+from os import path
+
+import settings
 
 
 class TreeParser:
     def __init__(self):
         self.parser = None
 
-    def setup(self, url = None):
+    def setup(self):
+        url = settings.CORENLP_URL
+
         if url is None:
             server = CoreNLPServer(
-               "./data/corenlp/stanford-corenlp-4.0.0.jar",
-               "./data/corenlp/stanford-corenlp-4.0.0-models.jar",
+               settings.CORENLP_PATH,
+               settings.CORENLP_MODEL_PATH,
             )
 
             server.start()
@@ -29,13 +35,16 @@ class TreeParser:
 
 if __name__ == '__main__':
     parser = TreeParser()
-    parser.setup('http://localhost:12366')
+    parser.setup()
     print("Loaded :D")
 
     with open('data/quality_data/quality_data.csv', encoding='utf-8') as f:
         reader = DictReader(f)
 
         for row in list(reader)[:1]:
-            forest = parser.parse(row['essay'])
-            for tree in forest:
-                tree.pretty_print()
+            sents = sent_tokenize(row['essay'])
+
+            for sent in sents:
+                forest = parser.parse(sent)
+                for tree in forest:
+                    tree.pretty_print()

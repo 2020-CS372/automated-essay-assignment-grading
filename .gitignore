@@ -110,9 +110,5 @@ ENV/
 # Version tracking
 version
 
-# local celery pid
-vitalcare/celerybeat.pid
-
 # CoreNLP
 data/corenlp
-
