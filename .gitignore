@@ -111,4 +111,7 @@ ENV/
 version
 
 # CoreNLP
-data/corenlp
+/data/corenlp/**/*
+
+# .gitkeep
+!/**/.gitkeep
