@@ -73,7 +73,7 @@ def capitalization(data=quality_data()):
     for datum in tqdm(data):
         essay_id, essay = datum["essay_id"], datum["essay"]
         sentences = sent_tokenize(essay)
-        print(sentences)
+        # print(sentences)
         sentence = ""
         for sent_idx in range(len(sentences)):
             errorMsgs = []
@@ -96,6 +96,10 @@ def capitalization(data=quality_data()):
                 )
 
     print("Total", len(checked), "capitalization error found.")
+
+    for c in checked:
+        print(c)
+
     return checked
 
 
