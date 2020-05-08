@@ -27,8 +27,8 @@ class TreeParser:
 
         self.server = server
         self.parser = CoreNLPParser(url=url)
-        
-        # maybe separated with another class... 
+
+        # maybe separated with another class...
         self.dependency_parser = CoreNLPDependencyParser(url=url)
 
         return self.parser
