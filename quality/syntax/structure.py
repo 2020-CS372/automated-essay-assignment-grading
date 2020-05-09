@@ -22,14 +22,20 @@ def structure(input_data):
 
         for sent_index, sent in enumerate(sents):
             tree = next(parser.parse(sent))
+            # tree.pretty_print()
 
-            main_elem = tree[0]
-            if main_elem.label() not in CLAUSES:
-                print("No root-level clause: %s / %s" % (main_elem.label(), sent))
+            if not check_root_clause(tree):
                 continue
 
-            tree.pretty_print()
-            # traverse_tree(main_elem)
+            # This didn't work as I expected
+            # if not check_root_subject(tree):
+            #    continue
+
+            if not check_noun_verb_ratio(tree):
+                continue
+
+            if not check_verb_for_clause(tree):
+                continue
 
 
 def stringify_tree(subtree):
@@ -43,9 +49,54 @@ def stringify_tree(subtree):
     return ' '.join(content)
 
 
-def traverse_tree(subtree):
+# Check if root clause is not fragment
+def check_root_clause(tree):
+    main_elem = tree[0]
+    if main_elem.label() not in CLAUSES:
+        print("No root-level clause: %s / %s" % (main_elem.label(), stringify_tree(tree)))
+        return False
+
+    return True
+
+
+# Check if root clause contains one subject, one verb
+def check_root_sv(tree):
+    # Find clause which height is lowest between clauses which contains VP / verbs
+    def find_main_clause(tree):
+        if type(tree) == str:
+            return None
+
+        for subtree in tree:
+            if subtree.label() == 'VP' or subtree.label() in VERBS:
+                return tree
+
+            if subtree.label() in CLAUSES:
+                main_clause = find_main_clause(subtree)
+                if main_clause is not None:
+                    return main_clause
+
+        return None
+
+    main_clause = find_main_clause(main_elem)
+    if main_clause is None:
+        print("No root-level verbs: %s" % stringify_tree(tree))
+        return False
+
+    main_np_count = 0
+    for elem in main_clause:
+        if elem.label() == 'NP':
+            main_np_count += 1
+
+    if main_np_count == 0:
+        print("No root-level subjects: %s" % stringify_tree(tree))
+        return False
+
+    return True
+
+
+def check_verb_for_clause(subtree):
     if type(subtree) == str:
-        return
+        return True
 
     if subtree.label() in CLAUSES_DECLARATIVE:
         verb_count = 0
@@ -61,16 +112,31 @@ def traverse_tree(subtree):
 
         if not bypass_check and verb_count != 1:
             print("Clause doesn't have exactly 1 verb phrase: %s" % stringify_tree(subtree))
+            return False
 
     for next_subtree in subtree:
-        traverse_tree(next_subtree)
+        if not check_verb_for_clause(next_subtree):
+            return False
+
+    return True
 
 
-if __name__ == '__main__':
-    text_amount = 1
+def check_noun_verb_ratio(tree):
+    def count_noun_verb(subtree, counter):
+        for next_subtree in subtree:
+            if type(next_subtree) == str:
+                continue
 
-    with open('data/quality_data/quality_data.csv') as f:
-        reader = DictReader(f)
+            if next_subtree.label() == 'VP':
+                counter['v'] += 1
 
-        for row in reader[:test_amount]:
-            structure(row['essay'])
+            elif next_subtree.label() == 'NP':
+                counter['n'] += 1
+
+            else:
+                count_noun_verb(next_subtree, counter)
+
+    counter = {'v': 0, 'n': 0}
+    count_noun_verb(tree, counter)
+
+    return counter['v'] <= counter['n']
