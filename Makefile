@@ -1,5 +1,5 @@
 setup:
-	wget "http://nlp.stanford.edu/software/stanford-corenlp-4.0.0.zip"
+	wget "http://nlp.stanford.edu/software/stanford-corenlp-4.0.0.zip" --no-check-certificate
 	unzip -j stanford-corenlp-4.0.0.zip -d ./data/corenlp
 	rm stanford-corenlp-4.0.0.zip
 
