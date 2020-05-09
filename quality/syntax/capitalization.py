@@ -2,7 +2,10 @@ import csv
 from nltk.tokenize import sent_tokenize
 from tqdm import tqdm
 
+from core.tree import TreeParser
+
 checked = []  # Array of (location, error_msg, peek sentence with part of prev_sentence)
+parser = TreeParser()
 
 """
 Captialization Rules [https://www.grammarly.com/blog/capitalization-rules/]
@@ -64,6 +67,8 @@ def check_wrong_capitalization(sentence):
 
 
 def capitalization(data):
+    parser.setup()
+    
     for datum in tqdm(data):
         essay_id, essay = datum["essay_id"], datum["essay"]
         sentences = sent_tokenize(essay)
