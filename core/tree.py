@@ -21,7 +21,7 @@ class TreeParser:
 
             server.start()
 
-            url = 'http://localhost:9000'
+            url = server.url
 
         self.parser = CoreNLPParser(url=url)
         return self.parser
