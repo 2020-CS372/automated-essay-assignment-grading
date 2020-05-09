@@ -3,41 +3,67 @@ from csv import DictReader
 from nltk import sent_tokenize, RegexpTokenizer
 
 
+CLAUSES_INTRODUCED = ('SBAR', 'SBARQ')
+CLAUSES_DECLARATIVE = ('S', 'SINV', 'SQ')
+CLAUSES = CLAUSES_INTRODUCED + CLAUSES_DECLARATIVE
+
+CONJUNCTIONS = ('CC', 'IN', ',')
+
+VERBS = ('VB', 'VBD', 'VBP', 'VBZ')
+
 def structure(input_data):
-    sents = sent_tokenize(input_data)
+    corpora = [input_dict['essay'] for input_dict in input_data]
 
-    parser = TreeParser()
-    parser.setup(sents)
+    for corpus in corpora:
+        sents = sent_tokenize(corpus)
 
-    score = 0
-    for sent_index, sent in enumerate(sents):
-        tree = parser.parse_one(sent)
+        parser = TreeParser()
+        parser.setup()
 
-        # Check whether there is only one root-level subject
-        if not tree:
-            print("No root-level subject, or structure is enable to parse at sent #%d" % sent_index)
-            score -= 1
+        for sent_index, sent in enumerate(sents):
+            tree = next(parser.parse(sent))
 
-            continue
+            main_elem = tree[0]
+            if main_elem.label() not in CLAUSES:
+                print("No root-level clause: %s / %s" % (main_elem.label(), sent))
+                continue
 
-        # Check whether there is only one root-level verb
-        def verb_count(subtree):
-            if subtree.label() in ('VB', 'VBD', 'VBP', 'VBZ'):
-                return 1 + sum([find_verb(next_tree) for next_tree in subtree])
+            tree.pretty_print()
+            # traverse_tree(main_elem)
 
-            # Don't check if it is not root-level verb
-            if 'CLR' in subtree.label():
-                return 0
 
-        if verb_count(tree) != 1:
-            print("Not exactly one root-level verb presented at sent #%d" % sent_index)
-            score -= 1
+def stringify_tree(subtree):
+    if type(subtree) == str:
+        return subtree
 
-            continue
+    content = []
+    for next_subtree in subtree:
+        content.append(stringify_tree(next_subtree))
 
-        # (Optional) Check if the arguments which root-level verb takes are propery given (ex. Objectives)
+    return ' '.join(content)
 
-    return score
+
+def traverse_tree(subtree):
+    if type(subtree) == str:
+        return
+
+    if subtree.label() in CLAUSES_DECLARATIVE:
+        verb_count = 0
+        bypass_check = False
+
+        for next_subtree in subtree:
+            if next_subtree.label() == 'VP' or next_subtree.label() in VERBS:
+                verb_count += 1
+
+            if next_subtree.label() in CONJUNCTIONS:
+                bypass_check = True
+                break
+
+        if not bypass_check and verb_count != 1:
+            print("Clause doesn't have exactly 1 verb phrase: %s" % stringify_tree(subtree))
+
+    for next_subtree in subtree:
+        traverse_tree(next_subtree)
 
 
 if __name__ == '__main__':
