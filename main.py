@@ -11,7 +11,7 @@ QUALITY_DATA_PATH = os.path.join(settings.QUALITY_DATA_DIR, 'quality_data.csv')
 
 def main():
 
-    with open(QUALITY_DATA_PATH) as csvfile:
+    with open(QUALITY_DATA_PATH, encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
         quality_data_reader = list(reader)
 
