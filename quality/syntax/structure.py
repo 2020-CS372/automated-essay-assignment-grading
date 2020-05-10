@@ -28,11 +28,11 @@ def structure(input_data):
                 continue
 
             # This didn't work as I expected
-            # if not check_root_subject(tree):
+            # if not check_root_sv(tree):
             #    continue
 
-            if not check_noun_verb_ratio(tree):
-                continue
+            # if not check_noun_verb_ratio(tree):
+            #     continue
 
             if not check_verb_for_clause(tree):
                 continue
