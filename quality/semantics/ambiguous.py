@@ -1,16 +1,12 @@
+import nltk
 import os
-import sys
-
+import re
+import settings
+import subprocess
 from tqdm import tqdm
-
-sys.path.append(os.path.dirname(os.path.abspath(
-    os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
-)))
 from nltk import sent_tokenize, RegexpTokenizer
-from core.tree import TreeParser
-
-# for debug
-import pandas as pd
+from nltk.tree import ParentedTree
+# from core.tree import TreeParser
 
 
 def ambiguous(data, debug=False):
@@ -18,23 +14,40 @@ def ambiguous(data, debug=False):
         essay = datum['essay']
         sentences = sent_tokenize(essay)
 
-        # setup tree parser
-        parser = TreeParser()
-        parser.setup()
+        # not sastified but it works
+        CORENLP_FOLDER_PATH = os.path.join(settings.BASE_DIR, 'data', 'corenlp')
+        os.chdir(CORENLP_FOLDER_PATH)
 
-        print('Parser')
-        print(parser.parser)
+        # sentences = [
+        #     'I love you.',
+        #     'Look at the dog with one eye.'
+        # ]
 
-        # parse sentences
         for sentence in sentences:
+            
+            # write sentences to datafile
+            with open(
+                os.path.join(CORENLP_FOLDER_PATH, '__test_sentence__.txt'),
+                mode='w'
+            ) as f:
+                f.write(sentence)
 
-            forest = parser.parse(sentence)
-            for tree in forest:
-                tree.pretty_print()
+            # getting output data
+            terminal_output = subprocess.check_output(
+                'java -mx500m -cp "*" edu.stanford.nlp.parser.lexparser.LexicalizedParser -printPCFGkBest 2 edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz __test_sentence__.txt',
+                shell=True                
+            )
+            output = terminal_output.decode('utf-8')
 
-
-# if __name__ == '__main__':
-#     test_corpora = pd.read_excel('data\\quality_data\\quality_data.xlsx')
-#     for test_corpus in test_corpora['essay']:
-#         ambiguous(test_corpus, debug=True)
-#         break
+            # extracting score
+            tqdm.write(sentence)
+            score = []
+            score_strings = re.findall('# Parse (.*)\r\n', output)
+            for idx, score_string in enumerate(score_strings):
+                score.append(float(score_string.split('with score ')[1]))
+                
+                if idx == 0:
+                    continue
+                
+                # tqdm.write(str(score))
+                tqdm.write(str( score[idx] - score[idx - 1] ))
