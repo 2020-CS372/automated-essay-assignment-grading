@@ -5,6 +5,10 @@ from nltk.corpus import stopwords
 from tqdm.auto import tqdm
 
 
+def lexical_diversity(text):
+    return len(set(text)) / len(text) * 100
+
+
 # TODO(Jooyon): if duplicates is the keyword, do not deduct points. (Extracting keywords needed)
 def duplicates(data):
     stop_words = list(stopwords.words('english'))
@@ -74,11 +78,12 @@ def duplicates(data):
                     'percentage': percentage,
                 })
 
+        d['lexical_diversity'] = lexical_diversity(essay)
         d['word_duplicates'] = word_duplicates
         d['word_duplicates_num'] = len(word_duplicates)
         d['bigram_duplicates'] = bigram_duplicates
         d['bigram_duplicates_num'] = len(bigram_duplicates)
 
-        tqdm.write(f"id:{d['essay_id']} - word_duplicates_num: {d['word_duplicates_num']} - bigram_duplicates_num: {d['bigram_duplicates_num']} - score: {d['score']}")
+        tqdm.write(f"id:{d['essay_id']} - lexical_diversity: {round(d['lexical_diversity'], 2)}% - word_duplicates_num: {d['word_duplicates_num']} - bigram_duplicates_num: {d['bigram_duplicates_num']} - score: {d['score']}")
 
     return filtered_data
