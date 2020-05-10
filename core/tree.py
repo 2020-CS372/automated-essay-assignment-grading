@@ -1,6 +1,6 @@
 from csv import DictReader
 from nltk import sent_tokenize
-from nltk.parse.corenlp import CoreNLPServer, CoreNLPParser
+from nltk.parse.corenlp import CoreNLPServer, CoreNLPParser, CoreNLPDependencyParser
 from os import path
 
 import settings
@@ -10,6 +10,7 @@ class TreeParser:
     def __init__(self):
         self.parser = None
         self.server = None
+        self.dependency_parser = None
 
     def setup(self):
         url = settings.CORENLP_URL
@@ -26,6 +27,10 @@ class TreeParser:
 
         self.server = server
         self.parser = CoreNLPParser(url=url)
+        
+        # maybe separated with another class... 
+        self.dependency_parser = CoreNLPDependencyParser(url=url)
+
         return self.parser
 
     def parse(self, sentence):
@@ -39,6 +44,12 @@ class TreeParser:
             raise AttributeError('server is not on')
 
         self.server.stop()
+
+    def dependency_parse(self, sentence):
+        if not self.dependency_parser:
+            raise AttributeError('dependency parser is not set up')
+
+        return self.dependency_parser.raw_parse(sentence)
 
 
 if __name__ == '__main__':
