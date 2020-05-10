@@ -9,6 +9,7 @@ import settings
 class TreeParser:
     def __init__(self):
         self.parser = None
+        self.server = None
 
     def setup(self):
         url = settings.CORENLP_URL
@@ -23,6 +24,7 @@ class TreeParser:
 
             url = server.url
 
+        self.server = server
         self.parser = CoreNLPParser(url=url)
         return self.parser
 
@@ -32,13 +34,19 @@ class TreeParser:
 
         return self.parser.raw_parse(sentence)
 
+    def free(self):
+        if not self.server:
+            raise AttributeError('server is not on')
+
+        self.server.stop()
+
 
 if __name__ == '__main__':
     parser = TreeParser()
     parser.setup()
     print("Loaded :D")
 
-    with open('data/quality_data/quality_data.csv', encoding='utf-8') as f:
+    with open(f'{settings.QUALITY_DATA_DIR}/quality_data.csv', encoding='utf-8') as f:
         reader = DictReader(f)
 
         for row in list(reader)[:1]:
@@ -48,3 +56,5 @@ if __name__ == '__main__':
                 forest = parser.parse(sent)
                 for tree in forest:
                     tree.pretty_print()
+
+    parser.free()
