@@ -16,10 +16,11 @@ class TreeParser:
         url = settings.CORENLP_URL
 
         if url is None:
-            server = CoreNLPServer(
+            self.server = CoreNLPServer(
                settings.CORENLP_PATH,
                settings.CORENLP_MODEL_PATH,
             )
+            self.server.start()
 
             server.start()
 
