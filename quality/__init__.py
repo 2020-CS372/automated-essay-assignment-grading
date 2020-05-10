@@ -1,4 +1,5 @@
 from quality.semantics.ambiguous import ambiguous
+from quality.semantics.duplicates import duplicates
 from quality.syntax.capitalization import capitalization
 from quality.syntax.preposition import preposition
 from quality.syntax.sample import sample
@@ -8,4 +9,5 @@ QUALITY_DICT = {
     'capitalization': capitalization,
     'preposition': preposition,
     'ambiguous': ambiguous,
+    'duplicates': duplicates,
 }
