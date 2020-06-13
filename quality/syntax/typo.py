@@ -40,6 +40,7 @@ def typo(data):
 
         essay_dict = {
             'essay_id': datum['essay_id'],
+            'typo_percentage': (len(typos) / len(words_)) * 100,
             'typos': typos,
         }
 
