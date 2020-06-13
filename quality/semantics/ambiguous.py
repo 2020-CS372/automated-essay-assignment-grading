@@ -24,7 +24,6 @@ def ambiguous(data, debug=False):
         # ]
 
         for sentence in sentences:
-            
             # write sentences to datafile
             with open(
                 os.path.join(CORENLP_FOLDER_PATH, '__test_sentence__.txt'),
@@ -34,7 +33,7 @@ def ambiguous(data, debug=False):
 
             # getting output data
             terminal_output = subprocess.check_output(
-                'java -mx500m -cp "*" edu.stanford.nlp.parser.lexparser.LexicalizedParser -printPCFGkBest 2 edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz __test_sentence__.txt',
+                'java -mx500m -cp "*" edu.stanford.nlp.parser.lexparser.LexicalizedParser -printPCFGkBest 20 edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz __test_sentence__.txt',
                 shell=True                
             )
             output = terminal_output.decode('utf-8')
@@ -49,5 +48,5 @@ def ambiguous(data, debug=False):
                 if idx == 0:
                     continue
                 
-                # tqdm.write(str(score))
+            # tqdm.write(str(score))
                 tqdm.write(str( score[idx] - score[idx - 1] ))
