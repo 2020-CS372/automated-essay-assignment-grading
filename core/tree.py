@@ -22,10 +22,14 @@ class TreeParser:
             )
             self.server.start()
 
+            print("[TreeParser] Running CoreNLP Server...")
             server.start()
 
             self.server = server
             url = server.url
+
+        else:
+            print("[TreeParser] Using existing CoreNLP Server...")
 
         self.parser = CoreNLPParser(url=url)
 

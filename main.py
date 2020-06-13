@@ -62,11 +62,15 @@ def main():
         }
 
     parser = argparse.ArgumentParser(description = 'Grade essay')
+    parser.add_argument('--corenlp-url', dest = 'corenlp_url', required = False, default = None)
     parser.add_argument('coverage', choices = ('all', 'sample'))
     parser.add_argument('targets', nargs='*')
 
     args = parser.parse_args()
     functions = []
+
+    if args.corenlp_url:
+        settings.CORENLP_URL = args.corenlp_url
 
     for target in args.targets:
         if target not in all_functions:
