@@ -172,7 +172,7 @@ def capitalization(data):
                 )
             )
 
-        tqdm.write(f"Essay {essay_id} Total {len(checked)} tense error found.")
+        tqdm.write(f"Essay {essay_id} Total {len(checked)} capitalization error found.")
 
         with open('./quality/syntax/capitalization.log', 'a', encoding='utf-8') as file:
             for c in checked:
