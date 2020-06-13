@@ -1,23 +1,26 @@
 from core.tree import TreeParser
 from nltk import sent_tokenize, word_tokenize, pos_tag
+from nltk.util import ngrams
 from tqdm.auto import tqdm
 
 def plagiarism(data):
+    source_corpus, suspicious_corpus = data
+
     parser = TreeParser()
     parser.setup()
 
     def jaccard_distance(set1, set2):
         return len(set1 & set2) / len(set1 | set2)
 
-    def generate_set(sents):
+    def generate_ngram_set(sents, ngram = 3):
         sents_set = set()
 
         for sent in sents:
-            sents_set.update([
+            sents_set.update(ngrams([
                 # "%s/%s" % pos_tag(word)
                 word
                 for word in word_tokenize(sent)
-            ])
+            ], ngram))
 
         return sents_set
 
@@ -81,30 +84,55 @@ def plagiarism(data):
 
         return lcs_size, lcs_ratio
 
-    for source, suspicious in tqdm(data):
-        # Jaccard Distance of words
-        source_sents = sent_tokenize(source)
-        source_set = generate_set(source_sents)
+    def generate_feature(corpus):
+        sents = sent_tokenize(corpus)
+        word_set = generate_ngram_set(sents, 1)
+        trigram_set = generate_ngram_set(sents, 3)
+        structure_set = generate_structure_set(sents)
 
-        suspicious_sents = sent_tokenize(suspicious)
-        suspicious_set = generate_set(suspicious_sents)
+        return (word_set, trigram_set, structure_set)
 
-        word_value = jaccard_distance(source_set, suspicious_set)
+    source_features = []
+    print("[Plagiarism] Extracting features of sources")
+    for source in tqdm(source_corpus):
+        source_features.append(generate_feature(source))
 
-        # Longest Common Subsequence
-        lcs_value = lcs(source, suspicious)[1]
+    print("[Plagiarism] Diffing essays")
+    for i, suspicious in tqdm(enumerate(suspicious_corpus)):
+        suspicious_feature = generate_feature(suspicious)
+        word_suspicious, trigram_suspicious, structure_suspicious = suspicious_feature
+        max_index = 0
+        max_indexes = (0, 0, 0, 0)
+        max_suspicious = 0
 
-        # Jaccard Distance of structures
-        source_structure_set = generate_structure_set(source_sents)
-        suspicious_structure_set = generate_structure_set(suspicious_sents)
+        for j, source in enumerate(source_corpus):
+            word_source, trigram_source, structure_source = source_features[j]
 
-        structure_value = jaccard_distance(
-            source_structure_set, suspicious_structure_set
-        )
+            # Jaccard Distance of words
+            word_index = jaccard_distance(word_source, word_suspicious)
 
-        tqdm.write(
-            "Word Index: %.4f, Structure Index: %.4f, Subsequence Index: %.4f" %
-            (word_value, structure_value, lcs_value)
-        )
+            # Jaccard Distance of trigrams
+            trigram_index = jaccard_distance(trigram_suspicious, trigram_source)
+
+            # Jaccard Distance of structures
+            structure_index = jaccard_distance(structure_suspicious, structure_source)
+
+            # Portion of LCS
+            lcs_index = lcs(source, suspicious)[1]
+
+            indexes = (word_index, trigram_index, structure_index, lcs_index)
+            average = sum(indexes) / 4
+
+            if average > max_index:
+                max_index = average
+                max_suspicious = j
+                max_indexes = indexes
+
+        if max_suspicious > 0.125:
+            tqdm.write("[Plagiarism] Essay #%d with Source#%d, with Index %.4f" % (i, max_suspicious, max_index))
+            tqdm.write(
+                "Word Index: %.4f, Structure Index: %.4f, Subsequence Index: %.4f, Trigram Index: %.4f" %
+                max_indexes
+            )
 
     parser.free()
