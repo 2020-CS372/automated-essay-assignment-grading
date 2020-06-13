@@ -23,9 +23,9 @@ class TreeParser:
 
             server.start()
 
+            self.server = server
             url = server.url
 
-        self.server = server
         self.parser = CoreNLPParser(url=url)
 
         # maybe separated with another class...
@@ -41,7 +41,7 @@ class TreeParser:
 
     def free(self):
         if not self.server:
-            raise AttributeError('server is not on')
+            return
 
         self.server.stop()
 
