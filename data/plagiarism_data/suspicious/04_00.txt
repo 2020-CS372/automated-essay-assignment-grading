@@ -1,6 +1,6 @@
 Figure 1.Global Hand Posture Detection and Recognition
 the main objectives of our approach. able  to  work  under  different  degrees  of  scene  background 
-complexity  and  illumination  conditions,  which  shouldnít 
+complexity  and  illumination  conditions,  which  shouldn‚Äôt 
 change   during   the   execution.   The   following   processes 
 compose the general framework: 
  
@@ -14,13 +14,13 @@ c)  Segmentation:  each  frame  is  processed  separately
 before  its  analysis:  the  image  is  smoothed,  skin  pixels  are 
 labelled, noise is removed and small gaps are filled. Image 
 edges are found, and finally, after a blob analysis, the blob 
-which represents the userís hand is segmented. A new image 
+which represents the user‚Äôs hand is segmented. A new image 
 is  created  which  contains  the  portion  of  the  original  one 
-where the userís hand was placed. 
+where the user‚Äôs hand was placed. 
  
-d)  Pattern  Recognition:  once  the  userís  hand  has  been 
+d)  Pattern  Recognition:  once  the  user‚Äôs  hand  has  been 
 segmented, its posture is compared with those stored in the 
-systemís    visual    memory    (VMS)    using    three    stage 
+system‚Äôs    visual    memory    (VMS)    using    three    stage 
 recognition   process   Kalman   filtering   process,   hidden 
 Markov models and graph matching.   
  
@@ -41,7 +41,7 @@ tone  colors.  The  histograms  on  the  left  side  of  figure  3
 represent   the   distribution   of   skin   hue   and   saturation 
 components  for  artificial  light  (red  line)  and  natural  light (blue  line).  Values  are  shifted  to  the  right  for  the  artificial 
 light  values.  A  lighting  compensation  technique  that  uses 
-ìreference  averageî  was  introduced  to  normalize  the  color 
+‚Äúreference  average‚Äù  was  introduced  to  normalize  the  color 
 appearance.  The  normalization  operation  subtracts  from 
 each  pixel  color  band  (R,G,B)  the  average  of  the  whole 
 image, so odd colored images like the reddish one are turned 
