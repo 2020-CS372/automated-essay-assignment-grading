@@ -132,11 +132,7 @@ def capitalization(data):
     checked = []  # Array of (location, error_msg, peek sentence with part of prev_sentence)
 
     parser.setup()
-<<<<<<< HEAD
     print(list(parser.parse("Parser setup")))
-=======
-    print("Parser setup")
->>>>>>> 9e42557d0ec1648681577fdffb9c4b5512ec8066
     print(ner_tagger.tag(word_tokenize("Stanford NER tagger setup")))
 
     for datum in tqdm(data, "Capitalization Checking"):
