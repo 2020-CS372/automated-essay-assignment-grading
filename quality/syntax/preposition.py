@@ -152,7 +152,7 @@ def preposition(data):
                         sentence, node.leaves()[0]))
 
         tqdm_idx += 1
-        tqdm.write('Essay #' + str(tqdm_idx) + ': Score ' + str((1 - (float(len(res_list)) / max(in_nodes_count, 1))) * 100))
+        tqdm.write('Essay #' + str(tqdm_idx) + ': Score ' + str((1 - (float(len(res_list)) / max(in_nodes_count, 1)))))
         for res in res_list:
             tqdm.write('Essay #' + str(tqdm_idx) + ': ' + str(res))
 
