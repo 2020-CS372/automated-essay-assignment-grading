@@ -32,7 +32,8 @@ def get_answer(f_name):
     
 
     for i in range(len(answer)):
-        temp = []
+        correct = []
+        wrong = []
         if (answer[i] == '.'):
             break
         elif (type(answer[i]) == float):
@@ -41,8 +42,11 @@ def get_answer(f_name):
             ano_list = answer[i].split(" | ")
             for ano in ano_list:
                 ano_in_list = ano[1 : -1].split(", ")
-                temp.append(tuple(ano_in_list))
-        answer_array.append(temp)
+                if (ano_in_list[-1] == '1'):
+                    correct.append(tuple(ano_in_list[:2]))
+                elif (ano_in_list[-1] == '2'):
+                    wrong.append(tuple(ano_in_list[:2]))
+        answer_array.append([correct, wrong])
 
     return answer_array
 
@@ -123,6 +127,30 @@ def set_verb_num(dep_list, triple, postag_list):
         return 0
 
 
+def calculate_result(answer_for_sentence, correct_relation, wrong_relation):
+    correct_answer = answer_for_sentence[0]
+    wrong_answer = answer_for_sentence[1]
+    intersection_cnt = 0
+
+    ca = len(correct_answer)
+    wa = len(wrong_answer)
+    cr = len(correct_relation)
+    wr = len(wrong_relation)
+
+    for elem in correct_relation:
+        if (elem in correct_answer):
+            intersection_cnt += 1
+    for elem in wrong_relation:
+        if (elem in wrong_answer):
+            intersection_cnt += 1
+
+    true_positive = intersection_cnt
+    false_positive = cr + wr - intersection_cnt
+    false_negative = ca + wa - intersection_cnt
+
+    return true_positive, false_positive, false_negative
+
+
 def agreement(corpus):
     # Agreement in English
     # TODO : capture pairs to be matched(subject - main verb, det - noun)
@@ -134,12 +162,7 @@ def agreement(corpus):
     PRP_3rd_person = ['he', 'she', 'it']
     articles = preprocessing(corpus)
     dep_parser = CoreNLPDependencyParser(url='http://localhost:9000')
-    answer = get_answer('p1')
     
-    print(len(answer))
-    for elem in answer:
-        print(elem)
-        print("")
     
     #parser = TreeParser()
     #parser.setup()
@@ -201,7 +224,7 @@ def agreement(corpus):
 
 
 
-    '''
+    #'''
     
     noun = ['NN', 'NNS', 'NNP', 'NNPS', 'PRP'] #0
     noun_singular = ['NN', 'NNP'] #1
@@ -216,16 +239,22 @@ def agreement(corpus):
     
     correct = 0
     wrong = 0
-
-    for article in articles:
+    cnt = 1
+    for article in articles[:1]:
         sentences = sent_tokenize(article)
+        file_name = 'p' + str(cnt)
+        answer = get_answer(file_name)
+        true_positive = 0
+        false_positive = 0
+        false_negative = 0
+
         # F-score도 문장마다 관리하자
         print(len(sentences))
         for sentence in sentences:
-            answer = []
+            answer_for_sentence = answer[sentences.index(sentence)]
             correct_relation = []
             wrong_relation = []
-            print(sentence)
+            #print(sentence)
             verb_num = 0
             noun_num = 0
             subj_verb = []
@@ -274,12 +303,31 @@ def agreement(corpus):
                 else :
                     pass
 
+            print("")
+            print(answer_for_sentence)
+            print(correct_relation)
+            print(wrong_relation)
+            print("")
+
+            tp, fp, fn = calculate_result(answer_for_sentence, correct_relation, wrong_relation)
+            true_positive += tp
+            false_positive += fp
+            false_negative += fn
             #print(subj_verb)
             #print(correct_relation)
             #print(wrong_relation)
-        
+        cnt += 1
+
+        print(true_positive)
+        print(false_positive)
+        print(false_negative)
+
+        precision = true_positive/(true_positive + false_positive)
+        recall = true_positive/(true_positive + false_negative)
+        F_score = 2*precision*recall/(precision + recall)
+        print(F_score)
         break
-    '''
+    #'''
 
     '''
     sentences = [
