@@ -1,4 +1,5 @@
 import csv
+from nltk import ne_chunk, pos_tag, word_tokenize
 from nltk.tokenize import sent_tokenize
 from tqdm import tqdm
 
@@ -41,6 +42,7 @@ def check_first_letter(sentence, prev_sentence):
         or prev_sentence[-1] not in ["'", '"']
     )
 
+
 def check_quotations(essay):
     # TODO: Check if inside of quotation mark("~~~"/'~~~') is full sentence -> check_first_letter(sentence, "")
     return False
@@ -51,8 +53,18 @@ def check_proper_noun(sentence):
     # Problem:
     # 1. word_tokenize breaks every words ex) 'New', 'York'
     # 2. default POS tagger classify NN to NNP if first is capitalized (...)
-    return False
 
+    proper_noun_not_capitalized = []
+
+    parsed_tree = ne_chunk(pos_tag(word_tokenize(sentence)), binary=True)
+    for subtree in parsed_tree.subtrees():
+        if subtree.label() == "NE":
+            NE = " ".join([leaf[0] for leaf in subtree.leaves()])
+            NE = NE.strip().replace("( ", "(", NE.count("( ")).replace(" )", ")", NE.count(" )")).replace(" .", ".", NE.count(" .")).replace(" ,", ",", NE.count(" ,"))
+            if NE[0] != NE[0].upper():
+                proper_noun_not_capitalized.append(NE)
+    
+    return proper_noun_not_capitalized
 
 def check_wrong_capitalization(sentence):
     for char_idx in range(len(sentence)):
@@ -67,7 +79,8 @@ def check_wrong_capitalization(sentence):
 
 def capitalization(data):
     parser.setup()
-    
+    print("Parser setup")
+
     for datum in tqdm(data):
         essay_id, essay = datum["essay_id"], datum["essay"]
         sentences = sent_tokenize(essay)
@@ -81,10 +94,21 @@ def capitalization(data):
                     (
                         f"Essay {essay_id} Sentence {sent_idx}",
                         "First letter of sentence must be capital letter.",
-                        f"... {prev_sentence[-20:]} {sentence} ...",
+                        f"... {prev_sentence[-10:]} {sentence[10:]} ...",
                     )
                 )
-                
+            
+            prop_noun_result = check_proper_noun(sentence)
+            if len(prop_noun_result) > 0:
+                for prop_noun in prop_noun_result:
+                    checked.append(
+                        (
+                            f"Essay {essay_id} Sentence {sent_idx}",
+                            f"Proper noun {prop_noun} in this sentence needs capitalization.",
+                            f"... {sentence} ...",
+                        )
+                    )
+
         if check_quotations(essay):
             checked.append(
                 (
@@ -93,7 +117,7 @@ def capitalization(data):
                     f"... {prev_sentence[-20:]} {sentence} ...",
                 )
             )
-
+    
     print("Total", len(checked), "capitalization error found.")
 
     for c in checked:
