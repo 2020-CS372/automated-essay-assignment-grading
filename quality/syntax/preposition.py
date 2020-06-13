@@ -35,17 +35,21 @@ def traverse_tree(tree, nodes):
             # nodes.append((tree.label(), tree.leaves()))
             nodes.append(tree)
 
+
 def error_string(message, sentence, word):
     return str(message) + ' for word \'' + str(word) + '\'' + ' in sentence \'' + str(sentence) + '\''
 
+
 def preposition(data):
     t = tqdm(data)
-        
+
     # setup TreeParser
     t.set_description('Creating parser for datafile')
     parser = TreeParser()
     parser.setup()
     t.set_description('Parser successfully created')
+
+    in_nodes_count = 0
 
     tqdm_idx = 0
     for datum in t:
@@ -74,7 +78,7 @@ def preposition(data):
                 # Convert nltk tree to nltk ParentedTree
                 parented_tree = ParentedTree.convert(tree)
 
-                # Getting nodes in tree 
+                # Getting nodes in tree
                 nodes = []
                 traverse_tree(parented_tree, nodes)
 
@@ -86,15 +90,16 @@ def preposition(data):
                     if node.label() == 'IN':
                         in_nodes.append((node_idx, node))
                         # tqdm.write('Preposition leaf node: ' + str(node))
-                
+
                 # break for no PP sentence
                 if len(in_nodes) <= 0:
                     # tqdm.write('There\'s no Preposition word.')
                     break
+                in_nodes_count += len(in_nodes)
 
                 """
                 RULES
-                
+
                 1. Ignore lonely IN - tehy're not actually PP (like 'if')
                 2. PP must have an object (NP)
                 3. PP usually comes before an object (WIP)
@@ -117,7 +122,7 @@ def preposition(data):
                         # res_list.append(error_string(
                         #    'No PP node but IN',
                         # sentence, node.leaves()[0]))
-                        continue                    
+                        continue
 
                     # check if a PP have an object with DependencyParser
                     obj_exists = False
@@ -147,14 +152,15 @@ def preposition(data):
                         sentence, node.leaves()[0]))
 
         tqdm_idx += 1
+        tqdm.write('Essay #' + str(tqdm_idx) + ': Score ' + str((1 - (float(len(res_list)) / max(in_nodes_count, 1)))))
         for res in res_list:
             tqdm.write('Essay #' + str(tqdm_idx) + ': ' + str(res))
-        
+
         tqdm.write('\n')
 
 
 if __name__ == '__main__':
     # for debug
     with open('data\\quality_data\\quality_data.csv', encoding='utf-8') as f:
-        reader = csv.DictReader(f)
+        reader=csv.DictReader(f)
         preposition(list(reader))
