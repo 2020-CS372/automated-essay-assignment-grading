@@ -1,14 +1,13 @@
 import csv
-from nltk import ne_chunk, pos_tag, word_tokenize
+from nltk import ne_chunk, pos_tag
 from nltk.tree import Tree
-from nltk.tokenize import sent_tokenize
+from nltk.tokenize import word_tokenize, sent_tokenize
 from nltk.tag.stanford import StanfordNERTagger
 from tqdm import tqdm
 
 import settings
 from core.tree import TreeParser
 
-checked = []  # Array of (location, error_msg, peek sentence with part of prev_sentence)
 parser = TreeParser()
 ner_tagger = StanfordNERTagger(
     settings.STANFORD_NER_MODEL, settings.STANFORD_NER_JAR, encoding="utf-8"
@@ -130,16 +129,18 @@ def check_wrong_capitalization(sentence):
 
 
 def capitalization(data):
+    checked = []  # Array of (location, error_msg, peek sentence with part of prev_sentence)
+
     parser.setup()
     print("Parser setup")
     print(ner_tagger.tag(word_tokenize("Stanford NER tagger setup")))
 
-    for datum in tqdm(data):
+    for datum in tqdm(data, "Capitalization Checking"):
         essay_id, essay = datum["essay_id"], datum["essay"]
         sentences = sent_tokenize(essay)
         # print(sentences)
         sentence = ""
-        for sent_idx in tqdm(range(len(sentences))):
+        for sent_idx in tqdm(range(len(sentences)), f"Essay {essay_id}"):
             prev_sentence = sentence
             sentence = sentences[sent_idx].strip()
             if check_first_letter(sentence, prev_sentence):
