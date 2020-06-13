@@ -10,7 +10,7 @@ each.
 and five hundred and twenty nine business blog 
 entries  were  collected  in  two  phases.  First,  a 
 small   number   of   blog   entries   are   manually 
-collected  from  various  CEOsís  blog  sites  and 
+collected  from  various  CEOs‚Äôs  blog  sites  and 
 business  blog  sites.  Meaningful  blog  entries 
 from  these  blog  sites  were  extracted  and  stored 
 into our database. Each blog entry is saved as a 
@@ -47,9 +47,9 @@ of our proposed hierarchical SVM classification
 and  the  non-hierarchical  SVM  in  the  five  most 
 frequent  categories.  Our  proposed  hierarchical 
 SVM classification has a better performance, but 
-poor in the categories like  ìclientî,  ìcustomerî, 
-ìbusinessî  and  ìfirmî.  We  now  try  to  explain 
+poor in the categories like  ‚Äúclient‚Äù,  ‚Äúcustomer‚Äù, 
+‚Äúbusiness‚Äù  and  ‚Äúfirm‚Äù.  We  now  try  to  explain 
 why the performance of those four categories is 
-poorer  than  other  categories.  The  topic  ìclientî 
-is  a  child  node  of  the  topic  ìuserî,  which 
+poorer  than  other  categories.  The  topic  ‚Äúclient‚Äù 
+is  a  child  node  of  the  topic  ‚Äúuser‚Äù,  which 
 contains    five    sub-categories.
