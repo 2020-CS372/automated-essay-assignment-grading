@@ -23,11 +23,11 @@ Captialization Rules [https://www.grammarly.com/blog/capitalization-rules/]
 -------------------------------------------------------------------------------
 Missing Capitalization
 1 -> check_first_letter
-2,5,7,8,9-1 -> check_proper_noun
-4 -> check_quote
+4 -> check_quotations
 
 Wrong Capitalization
 3 -> check_wrong_capitalization
+2,5,7,8,9-1 -> check_proper_noun
 
 Others
 6 -> Looks like there is no title in essays
@@ -41,17 +41,16 @@ def check_first_letter(sentence, prev_sentence):
         or prev_sentence[-1] not in ["'", '"']
     )
 
+def check_quotations(essay):
+    # TODO: Check if inside of quotation mark("~~~"/'~~~') is full sentence -> check_first_letter(sentence, "")
+    return False
+
 
 def check_proper_noun(sentence):
     # TODO: POS tag -> check capitalization of NNP & NNPS & PRP
     # Problem:
     # 1. word_tokenize breaks every words ex) 'New', 'York'
     # 2. default POS tagger classify NN to NNP if first is capitalized (...)
-    return False
-
-
-def check_quote(sentence):
-    # TODO: Check if inside of quotation mark("~~~"/'~~~') is full sentence -> check_first_letter(sentence, "")
     return False
 
 
@@ -75,24 +74,25 @@ def capitalization(data):
         # print(sentences)
         sentence = ""
         for sent_idx in range(len(sentences)):
-            errorMsgs = []
             prev_sentence = sentence
             sentence = sentences[sent_idx].strip()
             if check_first_letter(sentence, prev_sentence):
-                errorMsgs.append("First letter of sentence must be capital letter.")
-            if check_proper_noun(sentence):
-                errorMsgs.append("Proper noun must starts with capital letter.")
-            if check_quote(sentence):
-                errorMsgs.append("Full-sentence quotation starts with capital letter.")
-
-            for msg in errorMsgs:
                 checked.append(
                     (
                         f"Essay {essay_id} Sentence {sent_idx}",
-                        msg,
+                        "First letter of sentence must be capital letter.",
                         f"... {prev_sentence[-20:]} {sentence} ...",
                     )
                 )
+                
+        if check_quotations(essay):
+            checked.append(
+                (
+                    f"Essay {essay_id}",
+                    "Full-sentence quotation starts with capital letter.",
+                    f"... {prev_sentence[-20:]} {sentence} ...",
+                )
+            )
 
     print("Total", len(checked), "capitalization error found.")
 
