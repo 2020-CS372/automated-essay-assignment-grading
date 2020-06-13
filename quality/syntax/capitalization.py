@@ -31,12 +31,6 @@ Others
 """
 
 
-def quality_data():
-    with open("data/quality_data/quality_data.csv", encoding="utf-8") as csvfile:
-        reader = csv.DictReader(csvfile)
-        return list(reader)
-
-
 def check_first_letter(sentence, prev_sentence):
     return sentence[0] != sentence[0].upper() and (
         # TODO: dialogue form (ex. "~~~!" cries ~~.) need improvement
@@ -69,7 +63,7 @@ def check_wrong_capitalization(sentence):
     return False
 
 
-def capitalization(data=quality_data()):
+def capitalization(data):
     for datum in tqdm(data):
         essay_id, essay = datum["essay_id"], datum["essay"]
         sentences = sent_tokenize(essay)
@@ -101,7 +95,3 @@ def capitalization(data=quality_data()):
         print(c)
 
     return checked
-
-
-if __name__ == "__main__":
-    capitalization()
