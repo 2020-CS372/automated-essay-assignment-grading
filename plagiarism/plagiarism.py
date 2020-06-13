@@ -1,0 +1,2 @@
+def plagiarism(data):
+    pass
