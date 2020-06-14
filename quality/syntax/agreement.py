@@ -68,7 +68,7 @@ def set_noun_num(dep_list, triple, postag_list):
             return 1
         elif (triple[2][0].casefold() in ['they', 'we', 'you']):
             return 2
-        elif (triple[2][0].casefold() in ['us', 'them', 'her', 'him']):
+        elif (triple[2][0].casefold() in ['us', 'them', 'her', 'him', 'me']):
             return 0
         else :
             return 3
@@ -115,7 +115,6 @@ def set_verb_num(dep_list, triple, postag_list):
     print(triple[0][1])
     print("")
     '''
-
     # 찾은 동사가 main verb인 경우
     if (triple[0][1] in ['VB', 'VBP']): # 동사원형 or 3인칭 단수가 아닌 동사
         return 6
@@ -161,7 +160,9 @@ def agreement(corpus):
     dontcare_det = ['some', 'any', 'all', 'each'] # 사실 don't care라기보단 문맥에 따라 다른거지만 일단은 임시로...
     PRP_3rd_person = ['he', 'she', 'it']
     articles = preprocessing(corpus)
-    dep_parser = CoreNLPDependencyParser(url='http://localhost:9000')
+    parser = TreeParser()
+    parser.setup()
+    dep_parser = parser.dependency_parser
     
     
     #parser = TreeParser()
@@ -240,18 +241,19 @@ def agreement(corpus):
     correct = 0
     wrong = 0
     cnt = 1
-    for article in articles[:1]:
+    for article in articles[:10]:
         sentences = sent_tokenize(article)
         file_name = 'p' + str(cnt)
-        answer = get_answer(file_name)
+        ###answer = get_answer(file_name)
         true_positive = 0
         false_positive = 0
         false_negative = 0
+        wrong_example = []
 
         # F-score도 문장마다 관리하자
-        print(len(sentences))
+
         for sentence in sentences:
-            answer_for_sentence = answer[sentences.index(sentence)]
+            ###answer_for_sentence = answer[sentences.index(sentence)]
             correct_relation = []
             wrong_relation = []
             #print(sentence)
@@ -296,39 +298,43 @@ def agreement(corpus):
                         else :
                             wrong_relation.append((triple[0][0], triple[2][0]))
                             wrong += 1
-                    
+                            wrong_example.append([sentence, triple])
 
+                    
                 elif (triple[0][1] in noun and triple[2][1] in noun):
                     pass
                 else :
                     pass
+            ###print("")
+            ###print(answer_for_sentence)
+            ###print(correct_relation)
+            ###print(wrong_relation)
+            ###print("")
+            ###tp, fp, fn = calculate_result(answer_for_sentence, correct_relation, wrong_relation)
+            ###true_positive += tp
+            ###false_positive += fp
+            ###false_negative += fn
 
-            print("")
-            print(answer_for_sentence)
-            print(correct_relation)
-            print(wrong_relation)
-            print("")
-
-            tp, fp, fn = calculate_result(answer_for_sentence, correct_relation, wrong_relation)
-            true_positive += tp
-            false_positive += fp
-            false_negative += fn
+            
             #print(subj_verb)
             #print(correct_relation)
             #print(wrong_relation)
         cnt += 1
-
-        print(true_positive)
-        print(false_positive)
-        print(false_negative)
-
-        precision = true_positive/(true_positive + false_positive)
-        recall = true_positive/(true_positive + false_negative)
-        F_score = 2*precision*recall/(precision + recall)
-        print(F_score)
-        break
+        
+        # print(true_positive)
+        # print(false_positive)
+        # print(false_negative)
+        # precision = true_positive/(true_positive + false_positive)
+        # recall = true_positive/(true_positive + false_negative)
+        # F_score = 2*precision*recall/(precision + recall)
+        score = correct/(correct + wrong)
+        # print('F_score : ' + str(F_score))
+        print('score : ' + str(score))
+        
+        for elem in wrong_example:
+            print(elem)
+            print("")
     #'''
-
     '''
     sentences = [
         'I love you',
@@ -401,20 +407,8 @@ def agreement(corpus):
         print(case)
         print("")
     '''    
-
-
     
     
-    
-    
-    #parser.stop_server()
-    #print("Server stopped.")
-
-
-    
-    
-
-
-
+    parser.free()
 if __name__ == "__main__":
     agreement()
