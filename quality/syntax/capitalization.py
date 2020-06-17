@@ -42,15 +42,8 @@ Others
 
 def check_first_letter(sentence, prev_sentence):
     return sentence[0] != sentence[0].upper() and (
-        # TODO: dialogue form (ex. "~~~!" cries ~~.) need improvement
-        prev_sentence == ""
-        or prev_sentence[-1] not in ["'", '"']
+        prev_sentence == "" or prev_sentence[-1] not in ["'", '"']
     )
-
-
-def check_quotations(essay):
-    # TODO: Check if inside of quotation mark("~~~"/'~~~') is full sentence -> check_first_letter(sentence, "")
-    return False
 
 
 def check_proper_noun(sentence, stanford=False):
@@ -117,19 +110,9 @@ def check_proper_noun(sentence, stanford=False):
     return proper_noun_not_capitalized
 
 
-def check_wrong_capitalization(sentence):
-    for char_idx in range(len(sentence)):
-        character = sentence[char_idx]
-        if character.isupper():
-            # TODO: Do something with capitalized letter in wrong place
-            # pass if char_idx==0 or in NNP or
-            # Problem: Too specified and too many cases; we may classify correct one as error since we don't have it in case.
-            pass
-    return False
-
-
 def capitalization(data):
-    checked = []  # Array of (location, error_msg, peek sentence with part of prev_sentence)
+    checked = []
+    # Array of (location, error_msg, peek sentence with part of prev_sentence)
 
     parser.setup()
     print(list(parser.parse("Parser setup")))
@@ -143,43 +126,44 @@ def capitalization(data):
         for sent_idx in tqdm(range(len(sentences)), f"Essay {essay_id}"):
             prev_sentence = sentence
             sentence = sentences[sent_idx].strip()
-            if check_first_letter(sentence, prev_sentence):
-                checked.append(
-                    (
-                        f"Essay {essay_id} Sentence {sent_idx}",
-                        "First letter of sentence must be capital letter.",
-                        f"... {prev_sentence[-10:]} {sentence[10:]} ...",
-                    )
-                )
 
-            prop_noun_result = check_proper_noun(sentence, stanford=True)
-            if len(prop_noun_result) > 0:
-                for prop_noun, explanation in prop_noun_result:
+            try:
+                if check_first_letter(sentence, prev_sentence):
                     checked.append(
                         (
                             f"Essay {essay_id} Sentence {sent_idx}",
-                            f"Proper noun '{prop_noun}({explanation})' in this sentence needs capitalization.",
-                            f"... {sentence} ...",
+                            "First letter of sentence must be capital letter.",
+                            f"... {' '.join(prev_sentence.split(' ')[-5:])} {' '.join(sentence.split(' ')[:5])} ...",
                         )
                     )
 
-        if check_quotations(essay):
-            checked.append(
-                (
-                    f"Essay {essay_id}",
-                    "Full-sentence quotation starts with capital letter.",
-                    f"... {prev_sentence[-20:]} {sentence} ...",
+                prop_noun_result = check_proper_noun(sentence, stanford=True)
+                if len(prop_noun_result) > 0:
+                    for prop_noun, explanation in prop_noun_result:
+                        checked.append(
+                            (
+                                f"Essay {essay_id} Sentence {sent_idx}",
+                                f"Proper noun '{prop_noun}({explanation})' in this sentence needs capitalization.",
+                                f"... {sentence} ...",
+                            )
+                        )
+            except:
+                checked.append(
+                    (
+                        f"Essay {essay_id} Sentence {sent_idx}",
+                        f"Something went wrong during capitalization check."
+                        f"{sentence}",
+                    )
                 )
-            )
 
         tqdm.write(f"Essay {essay_id} Total {len(checked)} capitalization error found.")
 
-        with open('./quality/syntax/capitalization.log', 'a', encoding='utf-8') as file:
+        with open("./quality/syntax/capitalization.log", "a", encoding="utf-8") as file:
             for c in checked:
-                file.write(str(c)+'\n')
-        
+                file.write(str(c) + "\n")
+
         checked = []
-    
+
     parser.free()
 
     return
