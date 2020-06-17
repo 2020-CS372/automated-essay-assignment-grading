@@ -14,11 +14,11 @@ VERBS = ('VB', 'VBD', 'VBP', 'VBZ')
 def structure(input_data):
     corpora = [input_dict['essay'] for input_dict in input_data]
 
+    parser = TreeParser()
+    parser.setup()
+
     for corpus in corpora:
         sents = sent_tokenize(corpus)
-
-        parser = TreeParser()
-        parser.setup()
 
         for sent_index, sent in enumerate(sents):
             tree = next(parser.parse(sent))
@@ -36,6 +36,8 @@ def structure(input_data):
 
             if not check_verb_for_clause(tree):
                 continue
+    
+    parser.free()
 
 
 def stringify_tree(subtree):
