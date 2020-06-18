@@ -78,7 +78,7 @@ def duplicates(data):
                     'percentage': percentage,
                 })
 
-        d['lexical_diversity'] = lexical_diversity(essay)
+        d['lexical_diversity'] = lexical_diversity(word_tokenize(essay))
         d['word_duplicates'] = word_duplicates
         d['word_duplicates_num'] = len(word_duplicates)
         d['bigram_duplicates'] = bigram_duplicates
