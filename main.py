@@ -70,14 +70,23 @@ def main():
 
     parser = argparse.ArgumentParser(description = 'Grade essay')
     parser.add_argument('--corenlp-url', dest = 'corenlp_url', required = False, default = None)
-    parser.add_argument('coverage', choices = ('all', 'sample'))
+    parser.add_argument('coverage', choices = ('all', 'sample', 'score'))
+    parser.add_argument('--score-text', dest = 'text', required = False, default = None)
     parser.add_argument('targets', nargs='*')
 
     args = parser.parse_args()
-    functions = []
 
     if args.corenlp_url:
         settings.CORENLP_URL = args.corenlp_url
+
+    if args.coverage == 'score':
+        if args.text:
+            print(score([{'essay_id':'Scoring Text', 'essay': args.text}]))
+        else:
+            print("No text provided")
+        return
+
+    functions = []
 
     for target in args.targets:
         if target not in all_functions:
@@ -101,6 +110,37 @@ def main():
         corpus = using_corpus(10 if args.coverage == 'sample' else None)
         function_dict['function'](corpus)
 
+
+def score(corpus):
+    all_functions = {}
+    score_dict = {'plagiarism': {}, 'quality': {}}
+
+    # for key, plagiarism_fn in PLAGIARISM_DICT.items():
+    #     all_functions[key] = {
+    #         'type': 'plagiarism',
+    #         'function': plagiarism_fn,
+    #         'name': key,
+    #     }
+
+    for key, quality_fn in QUALITY_DICT.items():
+        all_functions[key] = {
+            'type': 'quality',
+            'function': quality_fn,
+            'name': key,
+        }
+    
+    functions = all_functions.values()
+
+    for func in functions:
+        t, n = func['type'], func['name']
+        try:
+            score_dict[t][n] = func['function'](corpus)
+        except:
+            print(f'Error occured while trying {n}')
+            pass
+
+    return score_dict
+    
 
 if __name__ == '__main__':
     main()
