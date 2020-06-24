@@ -20,9 +20,9 @@ def duplicates(data):
     for d in data:
         f_d = {
             'essay_id': d['essay_id'],
-            'essay_set': d['essay_set'],
+            'essay_set': d.get('essay_set'),
             'essay': d['essay'],
-            'score': d['domain1_score'],
+            'score': d.get('domain1_score'),
         }
         filtered_data.append(f_d)
 
