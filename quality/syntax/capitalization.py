@@ -29,14 +29,9 @@ Captialization Rules [https://www.grammarly.com/blog/capitalization-rules/]
 -------------------------------------------------------------------------------
 Missing Capitalization
 1 -> check_first_letter
-4 -> check_quotations
 
 Wrong Capitalization
-3 -> check_wrong_capitalization
 2,5,7,8,9-1 -> check_proper_noun
-
-Others
-6 -> Looks like there is no title in essays
 """
 
 
@@ -111,17 +106,19 @@ def check_proper_noun(sentence, stanford=False):
 
 
 def capitalization(data):
-    checked = []
-    # Array of (location, error_msg, peek sentence with part of prev_sentence)
-
     parser.setup()
     print(list(parser.parse("Parser setup")))
     print(ner_tagger.tag(word_tokenize("Stanford NER tagger setup")))
 
+    counter = 0
+
     for datum in tqdm(data, "Capitalization Checking"):
+        checked = []
+        # Array of (location, error_msg, peek sentence with part of prev_sentence)
+        
         essay_id, essay = datum["essay_id"], datum["essay"]
         sentences = sent_tokenize(essay)
-        # print(sentences)
+        
         sentence = ""
         for sent_idx in tqdm(range(len(sentences)), f"Essay {essay_id}"):
             prev_sentence = sentence
@@ -162,8 +159,8 @@ def capitalization(data):
             for c in checked:
                 file.write(str(c) + "\n")
 
-        checked = []
+        counter += len(checked)
 
     parser.free()
 
-    return
+    return counter
