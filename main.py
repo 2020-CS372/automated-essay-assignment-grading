@@ -81,7 +81,7 @@ def main():
 
     if args.coverage == 'score':
         if args.text:
-            print(score([{'essay_id':'Scoring Text', 'essay': args.text}]))
+            print(score([{'essay_id':'User input corpus', 'essay': args.text}]))
         else:
             print("No text provided")
         return

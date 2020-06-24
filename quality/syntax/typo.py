@@ -45,3 +45,4 @@ def typo(data):
         }
 
         print(essay_dict)
+        return essay_dict
