@@ -120,7 +120,7 @@ def capitalization(data):
         sentences = sent_tokenize(essay)
         
         sentence = ""
-        for sent_idx in tqdm(range(len(sentences)), f"Essay {essay_id}"):
+        for sent_idx in tqdm(range(len(sentences)), f"ID: {essay_id}"):
             prev_sentence = sentence
             sentence = sentences[sent_idx].strip()
 
