@@ -1,0 +1,36 @@
+python main.py sample capitalization preposition ambiguous duplicates punctuation structure typo agreement
+
+# capitalization
+Essay interim Total 0 capitalization error found.
+
+# preposition
+Essay #1: Score 0.9448818897637795
+Essay #1: Cannot find an object for word 'by' in sentence 'Along with the manual score, by using Grammarly [1], we measure and draw the contingency table, and get the F1 measure.'
+Essay #1: Cannot find an object for word 'to' in sentence '    Readability: According to Gov.UK, sentences longer than 25 words aren’t accessible [3].'
+Essay #1: Cannot find an object for word 'than' in sentence '  Readability: According to Gov.UK, sentences longer than 25 words aren’t accessible [3].'
+Essay #1: Cannot find an object for word 'with' in sentence 'It is because if we use books, especially novels, authors intentionally write sentences with wrong grammar using poetic license.'
+Essay #1: Cannot find an object for word 'to' in sentence 'Unfortunately, due to lack of sentence data for training, the performance was inferior.'
+Essay #1: Cannot find an object for word 'over' in sentence 'Using the same sample essays used in punctuation checking, it showed over 90% accuracy in false positives.'
+Essay #1: Cannot find an object for word 'over' in sentence 'Comparing it with the manual score using average percentage error, it showed our standard (over 1% duplicates of words, over 0.5% duplicated of bigrams) works better on long essays.'
+
+# punctuation
+{'essay_id': 'interim', 'wrong_num': 4, 'wrong_sentences': ['\uf06c\tPunctuations: When the word order shows it is a questioning clause, it should have a question mark(?', 'If the result is not one of ‘S’, ‘SBAR’, ‘SBARQ’, ‘SQ’, ‘SINV” [7], we classified them as incomplete sentences [b].', 'Narrowing to question marks(?', '[8]']}
+
+# typo
+{'essay_id': 'interim', 'typo_percentage': 0.8579599618684461, 'typos': ['EnglishClub', 'ViterbiParser', 'postag', 'ViterbiParser', 'CoreNLPParser', 'SBARQ', 'SINV', 'CoreNLPParser', 'CoreNLPDependency']}
+
+# duplicates
+id:interim - lexical_diversity: 37.31% - word_duplicates_num: 38 - bigram_duplicates_num: 0
+
+# structure
+No root-level clause: FRAG / Capitalizations : A sentence should start with a capital .
+No root-level clause: NP / Readability : According to Gov.UK , sentences longer than 25 words are n’t accessible [ 3 ] .
+No root-level clause: FRAG / Connection between sentences : Sentences should have a relatively above threshold similarity , considering connections .
+No root-level clause: FRAG / Lexical Diversity : It is better to use diverse synonyms when writing expressions , rather than using exact duplicates .
+No root-level clause: FRAG / Ambiguity : It is a bad decision to let a single sentence have two or more possible meanings .
+
+# agreement
+score : 0.8421052631578947
+['\uf06c\tSentence Pattern: A sentence should at least have a main clause, made up of a subject (a noun phrase) and a verb phrase.', (('have', 'VB'), 'nsubj', ('sentence', 'NN'))]
+['\uf06c\tCapitalizations: A sentence should start with a capital.', (('start', 'VB'), 'nsubj', ('sentence', 'NN'))]
+['Example rules are, ‘A preposition must have an object’, ‘Pre-position means place before.’, etc.', (('have', 'VB'), 'nsubj', ('preposition', 'NN'))]
