@@ -14,6 +14,7 @@ def punctuation(data):
     parser.setup()
     d = TreebankWordDetokenizer
 
+    return_list = []
     for datum in data:
         essay = datum['essay']
         sentences = sent_tokenize(essay)
@@ -76,6 +77,8 @@ def punctuation(data):
         }
 
         print(essay_dict)
+        return_list.append(essay_dict)
 
     parser.free()
+    return return_list
 
