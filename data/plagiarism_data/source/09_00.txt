@@ -6,15 +6,15 @@ cost.  Also  connecting users to  WLAN will  reduces traflic
 and interference in the mobile network. 
 6-  When  traffic  in  the  WLAN  becomes  too  high  and 
 overtlow occurs, HO to WLAN should be avoided. Mobile 
-network  coverage  are  available  everywhere,  so  it’s  not 
-necessary to connect users to WLAN when it can’t provide 
+network  coverage  are  available  everywhere,  so  itâ€™s  not 
+necessary to connect users to WLAN when it canâ€™t provide 
 desirable service. 
 7-  In  a HN,  fast users should remain connected to mobile 
 network  and  prevented  from  connecting  to  WLAN  since 
 WAN  is designed  for  low  velocity  users  and  has  small 
 coverage (-loom). 
-111. CONVENTIONAL “ D O F F   ALGORITHM FOR 
-“ I D     NETWORKS 
+111. CONVENTIONAL â€œ D O F F   ALGORITHM FOR 
+â€œ I D     NETWORKS 
 In  this  section,  a  conventional  handoff  algorithm,  which 
 based   on  RSS threshold   and   hysteresis   vaIues[S],    is 
 presented Fig. 2 illustrates block diagram of the algorithm. 
@@ -27,5 +27,5 @@ value (THw), if RSSc is less than THw, HO will be started.
 When the current cell is a macrocell, this mechanis will start HO  in two cases:  either current RSS  (RSSc) is less than a 
 threshold  (THm) or  RSS  from  a  WLAN  is  more  than  a 
 threshold (THw). If HO is started, cell selection mechanism 
-selects best  available  macrocell  (“M)  and  best  available 
-WLAN  (“W)  by  comparing  all  RSS values.  
+selects best  available  macrocell  (â€œM)  and  best  available 
+WLAN  (â€œW)  by  comparing  all  RSS values.  

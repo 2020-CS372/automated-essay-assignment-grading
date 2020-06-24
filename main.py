@@ -29,22 +29,29 @@ def main():
         if nitems is not None:
             source_items = source_items[:nitems]
 
-        for source in source_items:
-            source = os.path.join(PLAGIARISM_SOURCE_PATH, source)
+        for source_filename in source_items:
+            source = os.path.join(PLAGIARISM_SOURCE_PATH, source_filename)
+            print("READ %s" % source_filename)
             with open(source, encoding = 'utf-8') as source_file:
                 source_content = source_file.read()
-                source_corpus.append(source_content)
+                source_corpus.append({
+                    'name': int(source_filename.split('_')[0]),
+                    'content': source_content
+                })
 
         suspicious_corpus = []
         suspicious_items = os.listdir(PLAGIARISM_SUSPICIOUS_PATH)
         if nitems is not None:
             suspicious_items = suspicious_items[:nitems]
 
-        for suspicious in suspicious_items:
-            suspicious = os.path.join(PLAGIARISM_SUSPICIOUS_PATH, suspicious)
+        for suspicious_filename in suspicious_items:
+            suspicious = os.path.join(PLAGIARISM_SUSPICIOUS_PATH, suspicious_filename)
             with open(suspicious, encoding = 'utf-8') as suspicious_file:
                 suspicious_content = suspicious_file.read()
-                suspicious_corpus.append(suspicious_content)
+                suspicious_corpus.append({
+                    'name': int(suspicious_filename.split('_')[0]),
+                    'content': suspicious_content
+                })
 
         return source_corpus, suspicious_corpus
 

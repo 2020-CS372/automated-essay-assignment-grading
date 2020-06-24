@@ -1,17 +1,17 @@
 Fig. 5 - Adaptive Fuzzy Logic Based HO Algorithm for 
   If RSSw exceeds the threshold 
-(THw)  by  an amount  HYSw,  HO  will  be  done  to   ìW, Hybrid Networks 
-otherwise   HO   to   the   suggested   macrocell      ìMî   is 
+(THw)  by  an amount  HYSw,  HO  will  be  done  to   ‚ÄúW, Hybrid Networks 
+otherwise   HO   to   the   suggested   macrocell      ‚ÄúM‚Äù   is 
 investigated. If RSSm exceeds RSSc by   an amount HYSm, 
-HO is made to ìMì, otherwise no HO occurs. 
+HO is made to ‚ÄúM‚Äú, otherwise no HO occurs. 
 -  When the  current  cell  is  a  WLAN  (Fig.  4).   h   t    the 
-suggested WLAN  (ëW) is  investigated. If  RSSw  exceeds 
-RSSc  by  an amount HYSw,  HO will be  done to  ìWî, else 
-an attempt is made for HO to the suggested macrocell ìMî. 
+suggested WLAN  (‚ÄòW) is  investigated. If  RSSw  exceeds 
+RSSc  by  an amount HYSw,  HO will be  done to  ‚ÄúW‚Äù, else 
+an attempt is made for HO to the suggested macrocell ‚ÄúM‚Äù. 
 If  RSSm  exceeds THm  by  an amount HYSm,  HO will  be 
-done to ìMì, otherwise no   HO occurs. 
+done to ‚ÄúM‚Äú, otherwise no   HO occurs. 
 This     conventional     algorithm     cannot     meet     many 
-requirements of HNs. It  doesnít  have  minimum number  of 
+requirements of HNs. It  doesn‚Äôt  have  minimum number  of 
 HOs and short HO delay since it uses a tixed RSS averaging 
 window.  For  a fixed  averaging window,  if  h4T  velocity  is 
 high,  HO  delay  is  long and  this  delay may  result  in  poor 
@@ -19,10 +19,10 @@ signal  quality  and  possibly  disconnection  before  making
 HO,  but  if  MT  velocity  is  low,  HO  delay  is  short  and 
 number  of  unnecessary  HOs  is  increased.  So  a  k e d  
 averaging  window  only  in  a  certain velocity  has optimum 
-performance.  In  addition,  this  algorithm  doesnít  consider 
-M    c      conditions in the  WLAN,  also it doesnít prevent fast 
+performance.  In  addition,  this  algorithm  doesn‚Äôt  consider 
+M    c      conditions in the  WLAN,  also it doesn‚Äôt prevent fast 
 users from connecting to WLAN. 
-IV. ADAPTIVE FUZZY LOGIC BASED ì D O F F  
+IV. ADAPTIVE FUZZY LOGIC BASED ‚Äú D O F F  
 ALGORITHM 
 In this section the adaptive fuzzy logic based HO algorithm 
 for  HNs  is presented. In  [SI methods  for estimating  the 
@@ -37,7 +37,7 @@ Handoff   decision   mechanism   is   similar   to   previous
 algorithm (Fig. 3 and Fig. 4),  the only difference is that, here 
 HYSm  and  HYSw  values  are  updated  by  a  fuzzy  logic 
 system(FL.S).  Inputs of the FLS are MT speed and aaffc in 
-the  ëW (TRw).  The  FLS  is  designed  to  meet  special 
+the  ‚ÄòW (TRw).  The  FLS  is  designed  to  meet  special 
 requirements of HNs. When the velocity of the MT  is high 
 or the  traffic in the WLAN is heavy, HO to WLAN should 
 be   discouraged;   otherwise   HO   to   WLAN   should   be 
