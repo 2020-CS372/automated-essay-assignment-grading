@@ -41,40 +41,39 @@ def error_string(message, sentence, word):
 
 
 def preposition(data):
-    t = tqdm(data)
-
     # setup TreeParser
-    t.set_description('Creating parser for datafile')
     parser = TreeParser()
     parser.setup()
-    t.set_description('Parser successfully created')
 
-    in_nodes_count = 0
+    total_score = []
 
-    tqdm_idx = 0
-    for datum in t:
-        res_list = []
+    # iterate all essay inputs
+    for essay_data in data:
+        tqdm_idx = 0
 
-        # load essay file
-        essay = datum['essay']
-
-        # tokenize sentences
+        # tokenize essay sentences
+        essay = essay_data['essay']
         sentences = sent_tokenize(essay)
-        for idx, sentence in enumerate(sentences):
+
+        # iterate for all sentences
+        for sentence in tqdm(sentences):
+            """
+            Preprocessing sentence
+            
+            1. Parse and generate tree for one sentence in essay
+            2. Convert tree to nltk ParentedTree
+            3. Extract nodes in ParentedTree
+            4. Find preposition nodes
+            """
+            in_nodes_count = 0
+            res_list = []
+
             # parse sentence
             res = parser.parse(sentence)
             _dep_res = parser.dependency_parse(sentence)
             dep_res = _dep_res.__next__()
 
             for tree in res:
-                # for debug
-                t.set_description(
-                    '[' + str(idx + 1) + '/' + str(len(sentences)) + '] ' +
-                    '%s' % sentence[:20] + '...')
-                # tqdm.write(sentence)
-                # tqdm.write(str(list(tree)))
-                # tree.pretty_print()
-
                 # Convert nltk tree to nltk ParentedTree
                 parented_tree = ParentedTree.convert(tree)
 
@@ -89,7 +88,6 @@ def preposition(data):
                     node_idx += 1
                     if node.label() == 'IN':
                         in_nodes.append((node_idx, node))
-                        # tqdm.write('Preposition leaf node: ' + str(node))
 
                 # break for no PP sentence
                 if len(in_nodes) <= 0:
@@ -98,7 +96,7 @@ def preposition(data):
                 in_nodes_count += len(in_nodes)
 
                 """
-                RULES
+                Testing preposition nodes with rules below:
 
                 1. Ignore lonely IN - tehy're not actually PP (like 'if')
                 2. PP must have an object (NP)
@@ -146,17 +144,25 @@ def preposition(data):
                                 if _deps_case == node_idx:
                                     obj_exists = True
 
+                    # if PP do not have an object
                     if obj_exists == False:
                         res_list.append(error_string(
                             'Cannot find an object',
                         sentence, node.leaves()[0]))
 
-        tqdm_idx += 1
-        tqdm.write('Essay #' + str(tqdm_idx) + ': Score ' + str((1 - (float(len(res_list)) / max(in_nodes_count, 1)))))
-        for res in res_list:
-            tqdm.write('Essay #' + str(tqdm_idx) + ': ' + str(res))
+            # adding score
+            tqdm_idx += 1
+            score = (1 - (float(len(res_list)) / max(in_nodes_count, 1))) * 100
+            tqdm.write('Sentence #' + str(tqdm_idx) + ' / ' +
+                        sentence[:10] + '...' + ': Score ' + str(score))
+            for res in res_list:
+                tqdm.write('#' + str(tqdm_idx) + ': ' + str(res))
 
-        tqdm.write('\n')
+            total_score.append(score)
+
+    # returning total score
+    print('pp total score', total_score)
+    return sum(total_score) / max(1, len(total_score))
 
 
 if __name__ == '__main__':
