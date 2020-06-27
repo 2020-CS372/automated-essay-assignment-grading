@@ -17,8 +17,12 @@ def structure(input_data):
     parser = TreeParser()
     parser.setup()
 
+    error_count = 0
+    total_count = 0
     for corpus in corpora:
         sents = sent_tokenize(corpus)
+        error_count += len(sents)
+        total_count += len(sents)
 
         for sent_index, sent in enumerate(sents):
             tree = next(parser.parse(sent))
@@ -31,14 +35,17 @@ def structure(input_data):
             # if not check_root_sv(tree):
             #    continue
 
-            # if not check_noun_verb_ratio(tree):
-            #     continue
+            if not check_noun_verb_ratio(tree):
+                continue
 
             if not check_verb_for_clause(tree):
                 continue
-    
+
+            error_count -= 1
+
     parser.free()
 
+    return 100 * (1 - error_count / total_count)
 
 def stringify_tree(subtree):
     if type(subtree) == str:
