@@ -94,13 +94,17 @@ def main():
 
     if args.coverage == 'score':
         if args.text:
-            print(score(functions, {
-                'quality': [{'essay_id':'User input corpus', 'essay': args.text}],
-                'plagiarism': ([{ 'name': 'score_corpus', 'content': args.text }], plagiarism_data_reader()[1])
-            }))
+            text = args.text
 
         else:
-            print("No text provided")
+            r = open(settings.INPUT_FILE, mode='rt', encoding='utf-8')
+            text = r.read()
+
+        print(score(functions, {
+            'quality': [{'essay_id': 'User input corpus', 'essay': text}],
+            'plagiarism': ([{'name': 'score_corpus', 'content': text}], plagiarism_data_reader()[1])
+        }))
+
         return
 
     for function_dict in functions:
@@ -123,9 +127,9 @@ def score(functions, corpus):
         t, n = func['type'], func['name']
         try:
             score_dict[t][n] = func['function'](corpus[t])
-        except:
-            print(f'Error occured while trying {n}')
-            pass
+
+        except Exception as ex:
+            print(f'Error occurred in {n} : ', ex)
 
     return score_dict
 

@@ -8,3 +8,4 @@ CORENLP_MODEL_PATH = os.path.join(BASE_DIR, 'data', 'corenlp', 'stanford-corenlp
 CORENLP_URL = None
 STANFORD_NER_JAR = os.path.join(BASE_DIR, 'data', 'stanford_ner', 'stanford-ner.jar')
 STANFORD_NER_MODEL = os.path.join(BASE_DIR, 'data', 'stanford_ner', 'english.all.3class.distsim.crf.ser.gz')
+INPUT_FILE = os.path.join(BASE_DIR, 'data', 'input.txt')
