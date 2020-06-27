@@ -131,7 +131,41 @@ def score(functions, corpus):
         except Exception as ex:
             print(f'Error occurred in {n} : ', ex)
 
-    return score_dict
+    print('\n\n--------------------------------')
+    # return score_dict
+    if score_dict['plagiarism']['plagiarism'] != 0:
+        print('\n\nPlagiarism detected!!! No need for scoring!!!')
+    else:
+        default_score = 20
+        score = default_score
+        print('default_score:', default_score)
+
+        # syntax
+        print('capitalization:', max(10 - (score_dict['quality']['capitalization']) * 0.5, 0), '/10')
+        score += max(10 - (score_dict['quality']['capitalization']) * 0.5, 0)
+        print('preposition:', score_dict['quality']['preposition'] * 0.1, '/10')
+        score += score_dict['quality']['preposition'] * 0.1
+        print('punctuation:', max(10 - (score_dict['quality']['punctuation'][0]['wrong_num']) * 0.5, 0), '/10')
+        score += max(10 - (score_dict['quality']['punctuation'][0]['wrong_num']) * 0.5, 0)
+        print('structure:', score_dict['quality']['structure'] * 0.1, '/10')
+        score += score_dict['quality']['structure'] * 0.1
+        print('typo:', (100 - score_dict['quality']['typo']['typo_percentage']) * 0.1, '/10')
+        score += (100 - score_dict['quality']['typo']['typo_percentage']) * 0.1
+        print('agreement:', score_dict['quality']['agreement'] * 0.1, '/10')
+        score += score_dict['quality']['agreement'] * 0.1
+        print('sentence_length:', score_dict['quality']['sentence_length'] * 0.1, '/10')
+        score += score_dict['quality']['sentence_length'] * 0.1
+
+        # semantic
+        print('ambiguous:', score_dict['quality']['ambiguous'] * 0.05, '/5')
+        score += score_dict['quality']['ambiguous'] * 0.05
+        temp = max(score_dict['quality']['duplicates'][0]['lexical_diversity'] * 0.05 - (score_dict['quality']['duplicates'][0]['bigram_duplicates_num']) * 0.25, 0)
+        print('duplicates:', temp, '/5')
+        score += temp
+
+        print('\n\n======================')
+        print(f'EssayCare total score: {score} / 100')
+
 
 
 if __name__ == '__main__':
