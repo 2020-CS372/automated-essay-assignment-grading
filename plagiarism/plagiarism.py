@@ -200,7 +200,7 @@ def plagiarism(data, test_module = False):
                 max_indexes = indexes
                 max_iscorrect = pred_results[i, j]['is_plagiarism']
 
-        if max_index > 1.2:
+        if max_index > 2:
             print("[Plagiarism] Essay #%d with Source#%d, with Index %.4f" % (i, max_suspicious, max_index))
 
             if test_module:
