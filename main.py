@@ -31,7 +31,6 @@ def main():
 
         for source_filename in source_items:
             source = os.path.join(PLAGIARISM_SOURCE_PATH, source_filename)
-            print("READ %s" % source_filename)
             with open(source, encoding = 'utf-8') as source_file:
                 source_content = source_file.read()
                 source_corpus.append({
@@ -53,19 +52,21 @@ def main():
                     'content': suspicious_content
                 })
 
-        return source_corpus, suspicious_corpus
+        return source_corpus, (source_corpus, suspicious_corpus)
 
     all_functions = {}
     for key, plagiarism_fn in PLAGIARISM_DICT.items():
         all_functions[key] = {
             'type': 'plagiarism',
-            'function': plagiarism_fn
+            'function': plagiarism_fn,
+            'name': key
         }
 
     for key, quality_fn in QUALITY_DICT.items():
         all_functions[key] = {
             'type': 'quality',
-            'function': quality_fn
+            'function': quality_fn,
+            'name': key
         }
 
     parser = argparse.ArgumentParser(description = 'Grade essay')
@@ -79,13 +80,6 @@ def main():
     if args.corenlp_url:
         settings.CORENLP_URL = args.corenlp_url
 
-    if args.coverage == 'score':
-        if args.text:
-            print(score([{'essay_id':'User input corpus', 'essay': args.text}]))
-        else:
-            print("No text provided")
-        return
-
     functions = []
 
     for target in args.targets:
@@ -97,6 +91,17 @@ def main():
 
     if len(functions) == 0:
         functions = all_functions.values()
+
+    if args.coverage == 'score':
+        if args.text:
+            print(score(functions, {
+                'quality': [{'essay_id':'User input corpus', 'essay': args.text}],
+                'plagiarism': ([{ 'name': 'score_corpus', 'content': args.text }], plagiarism_data_reader()[1])
+            }))
+
+        else:
+            print("No text provided")
+        return
 
     for function_dict in functions:
         using_corpus = None
@@ -111,36 +116,19 @@ def main():
         function_dict['function'](corpus)
 
 
-def score(corpus):
-    all_functions = {}
+def score(functions, corpus):
     score_dict = {'plagiarism': {}, 'quality': {}}
-
-    # for key, plagiarism_fn in PLAGIARISM_DICT.items():
-    #     all_functions[key] = {
-    #         'type': 'plagiarism',
-    #         'function': plagiarism_fn,
-    #         'name': key,
-    #     }
-
-    for key, quality_fn in QUALITY_DICT.items():
-        all_functions[key] = {
-            'type': 'quality',
-            'function': quality_fn,
-            'name': key,
-        }
-    
-    functions = all_functions.values()
 
     for func in functions:
         t, n = func['type'], func['name']
         try:
-            score_dict[t][n] = func['function'](corpus)
+            score_dict[t][n] = func['function'](corpus[t])
         except:
             print(f'Error occured while trying {n}')
             pass
 
     return score_dict
-    
+
 
 if __name__ == '__main__':
     main()
