@@ -11,17 +11,20 @@ def preprocessing(corpus):
 
 def sentence_length(corpus):
     too_long_sentences = []
+    total_sentences = 0
 
     tokenizer = RegexpTokenizer("\s+", gaps=True)
 
     articles = preprocessing(corpus)
     for article in articles:
         sentences = sent_tokenize(article)
+        total_sentences += len(sentences)
         for sentence in sentences:
             words = tokenizer.tokenize(sentence)
             if (len(words) > 25):
                 too_long_sentences.append((sentence, len(words)))
 
+    return (1 - len(too_long_sentences) / total_sentences) * 100
 
 
 if __name__ == "__main__":

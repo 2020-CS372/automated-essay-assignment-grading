@@ -13,8 +13,8 @@ import pandas as pd
 Checking agreement between noun and verb in sentences.
 Main noun(subject) and main verb should be matched in aspect of number.
 
-EX) He goes to the shcool. (O)
-    He go to the shchool. (X)
+EX) He goes to the school. (O)
+    He go to the school. (X)
     I can do whatever I want. (O)
     I can does whatever I want. (X)
 '''
@@ -36,7 +36,7 @@ def get_answer(f_name):
 
     df = pd.read_excel(io = file_name, sheet_name = sheet)
     answer = df['annotation']
-    
+
     for i in range(len(answer)):
         correct = []
         wrong = []
@@ -76,7 +76,7 @@ def set_noun_num(dep_list, triple, postag_list):
     # Plural noun
     if (triple[2][1] in postag_list[2]):
         return 2
-    
+
     # Personal noun
     elif (triple[2][1] in postag_list[3]):
         if (triple[2][0].casefold() in ['i']):
@@ -87,15 +87,15 @@ def set_noun_num(dep_list, triple, postag_list):
             return 0
         else :
             return 3
-    
+
     # Singular noun or plural noun which is combination of more than one singular noun with conjugate such as 'and'.
     elif (triple[2][1] in postag_list[1]):
         if (find_conj(dep_list, triple[2])):
             return 2
         else :
             return 3
-    
-    else :  
+
+    else :
         return 0
 
 
@@ -109,7 +109,7 @@ def set_noun_num(dep_list, triple, postag_list):
 # 6: other than 3rd person verb - do, go, give
 # 7: don't care(aux other than do or does + other past tense verb - did, can, may ...
 def set_verb_num(dep_list, triple, postag_list):
-    for word in dep_list: 
+    for word in dep_list:
         # If found verb is not main verb -> need aux
         if (word[1] == 'aux' and word[0] == triple[0]  and word[2][1] == 'MD'):
             if (word[2][0].casefold() == 'does'):
@@ -180,7 +180,7 @@ def calculate_F_score(articles, dep_parser, postag_list):
         true_positive = 0
         false_positive = 0
         false_negative = 0
-        
+
         # file should be svaed in /data/quality_data/agreement/ and file name should be p + essay number.
         file_name = 'p' + str(cnt)
         answer = get_answer(file_name)
@@ -193,9 +193,9 @@ def calculate_F_score(articles, dep_parser, postag_list):
             noun_num = 0
             subj_verb = []
             tree = dep_parser.raw_parse(sentence)
-            dep_list = [[(governor, dep, dependent) for governor, dep, dependent in parse.triples()] for parse in tree]         
+            dep_list = [[(governor, dep, dependent) for governor, dep, dependent in parse.triples()] for parse in tree]
 
-            for dependency in dep_list[0]:              
+            for dependency in dep_list[0]:
                 if dependency[1] == 'nsubj':
                     subj_verb.append(dependency)
 
@@ -218,20 +218,20 @@ def calculate_F_score(articles, dep_parser, postag_list):
                             correct_relation.append((triple[0][0], triple[2][0]))
                         else :
                             wrong_relation.append((triple[0][0], triple[2][0]))
-            
+
             tp, fp, fn = calculate_result(answer_for_sentence, correct_relation, wrong_relation)
             true_positive += tp
             false_positive += fp
-            false_negative += fn            
-        
+            false_negative += fn
+
         cnt += 1
-        
+
     precision = true_positive/(true_positive + false_positive)
     recall = true_positive/(true_positive + false_negative)
     F_score = 2*precision*recall/(precision + recall)
 
     return precision, recall, F_score
-                            
+
 
 # Main agreement function
 def agreement(corpus):
@@ -242,11 +242,11 @@ def agreement(corpus):
 
     # Prepare data
     articles = preprocessing(corpus)
-    
+
     # Set variables
     wrong_example = []
     all_results=[]
-    
+
     noun = ['NN', 'NNS', 'NNP', 'NNPS', 'PRP'] #0
     noun_singular = ['NN', 'NNP'] #1
     noun_plural = ['NNS', 'NNPS'] #2
@@ -255,12 +255,12 @@ def agreement(corpus):
     verb_1 = ['VB', 'VBD', 'VBP'] # 5   Verbs which can be used as main verb directly
     verb_2 = [''] #6
     postag_list = [noun, noun_singular, noun_plural, noun_personal, verb, verb_1, verb_2]
-  
+
     for article in tqdm(articles):
         sentences = sent_tokenize(article)
         correct = 0
         wrong = 0
-     
+
         for sentence in sentences:
             verb_num = 0
             noun_num = 0
@@ -268,9 +268,9 @@ def agreement(corpus):
 
             # Parse sentence and extract dependency between subject and verb
             tree = dep_parser.raw_parse(sentence)
-            dep_list = [[(governor, dep, dependent) for governor, dep, dependent in parse.triples()] for parse in tree]            
-            
-            for dependency in dep_list[0]:              
+            dep_list = [[(governor, dep, dependent) for governor, dep, dependent in parse.triples()] for parse in tree]
+
+            for dependency in dep_list[0]:
                 if dependency[1] == 'nsubj': # or 'nsubj:pass' for passive form
                     subj_verb.append(dependency)
 
@@ -279,11 +279,11 @@ def agreement(corpus):
                 if (triple[0][1] in verb and triple[2][1] in noun):
                     noun_num = set_noun_num(dep_list[0], triple, postag_list)
                     verb_num = set_verb_num(dep_list[0], triple, postag_list)
-                    
+
                     if (noun_num != 0 and  verb_num != 0):
                         if (verb_num == 7): # verb is don't care
                             correct += 1
-                        elif (verb_num in [3, 5] and noun_num == 3): # 3rd person singular 
+                        elif (verb_num in [3, 5] and noun_num == 3): # 3rd person singular
                             correct += 1
                         elif (verb_num == 1 and noun_num == 1): # 1st person singular 인칭 단수
                             correct += 1
@@ -296,14 +296,17 @@ def agreement(corpus):
                         else :
                             wrong += 1
                             wrong_example.append([sentence, triple])
-       
-        score = correct/(correct + wrong)*100
+
+        if (correct + wrong == 0):
+            score = 100
+        else:
+            score = correct / (correct + wrong) * 100
+
         all_results.append(score)
 
     #precision, recall, F_score = calculate_F_score(articles, dep_parser, postag_list)
-         
-    parser.free()
 
+    parser.free()
     return score
 
 if __name__ == "__main__":
