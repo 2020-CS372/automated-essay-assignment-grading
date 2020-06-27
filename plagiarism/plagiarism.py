@@ -3,8 +3,8 @@ from nltk import sent_tokenize, word_tokenize, pos_tag
 from nltk.util import ngrams
 from tqdm.auto import tqdm
 
-def plagiarism(data):
-    source_corpus, suspicious_corpus = data
+def plagiarism(data, test_module = False):
+    test_corpus, (source_corpus, suspicious_corpus) = data
 
     parser = TreeParser()
     parser.setup()
@@ -170,14 +170,15 @@ def plagiarism(data):
 
 
     print("[Plagiarism] Diffing essays")
-    pred_results = predict(suspicious_corpus, source_corpus, True)
+    pred_results = predict(test_corpus, source_corpus, True)
     true_positive = 0
     false_positive = 0
     false_negative = 0
+    detection = 0
     data_true = []
     data_false = []
 
-    for i in range(len(suspicious_corpus)):
+    for i in range(len(test_corpus)):
         max_index = 0
         max_indexes = (0, 0, 0, 0)
         max_suspicious = 0
@@ -199,12 +200,18 @@ def plagiarism(data):
                 max_indexes = indexes
                 max_iscorrect = pred_results[i, j]['is_plagiarism']
 
-        if max_suspicious > 1.2:
+        if max_index > 1.2:
             print("[Plagiarism] Essay #%d with Source#%d, with Index %.4f" % (i, max_suspicious, max_index))
-            print(
-                "Word Index: %.4f, Structure Index: %.4f, Subsequence Index: %.4f, Trigram Index: %.4f, Correct: %s" %
-                (*max_indexes, str(max_iscorrect))
-            )
+
+            if test_module:
+                print(
+                    (
+                        "Word Index: %.4f, Structure Index: %.4f, Subsequence Index: %.4f, " +
+                        "Trigram Index: %.4f, Correct: %s"
+                    ) % (*max_indexes, str(max_iscorrect))
+                )
+
+            detection += 1
 
             if max_iscorrect:
                 true_positive += 1
@@ -215,11 +222,14 @@ def plagiarism(data):
         else:
             false_negative += 1
 
-    precision = true_positive / (true_positive + false_positive)
-    recall = true_positive / (true_positive + false_negative)
-    f_score = 2 * (1 / ((1 / precision) + (1 / recall)))
-    print("Precision: %.4f, Recall: %.4f, F-Score: %.4f" % (precision, recall, f_score))
-    print("TRUE" + ' '.join(["%.4f" % data for data in data_true]))
-    print("FALSE" + ' '.join(["%.4f" % data for data in data_false]))
+    if test_module:
+        precision = true_positive / (true_positive + false_positive)
+        recall = true_positive / (true_positive + false_negative)
+        f_score = 2 * (1 / ((1 / precision) + (1 / recall)))
+        print("Precision: %.4f, Recall: %.4f, F-Score: %.4f" % (precision, recall, f_score))
+        print("TRUE" + ' '.join(["%.4f" % data for data in data_true]))
+        print("FALSE" + ' '.join(["%.4f" % data for data in data_false]))
 
     parser.free()
+
+    return detection
