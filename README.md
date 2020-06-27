@@ -19,14 +19,10 @@ $ make run-server   # Start CoreNLP Server
 ```
 
 Once the server is running, you can run the EssayCare in another terminal.
-```console
-$ python main.py score --corenlp-url=http://localhost:9000 --score-text="Your essay here"
-```
 
-You can specify which features to be used. For features, please refer to [Features](#features).
-If no features are specified, the all features will be used as default.
+Copy and Paste your essay to `data/input.txt` and then run the command,
 ```console
-$ python main.py score capitalization plagiarism ... --corenlp-url=http://localhost:9000 --score-text="Your essay here"
+$ python main.py score --corenlp-url=http://localhost:9000
 ```
 
 You can also test EssayCare with our pre-prepared dataset.
